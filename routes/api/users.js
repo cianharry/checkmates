@@ -80,13 +80,13 @@ router.post('/', [
                 payload,
                 config.get('jwtSecret'),
                 { expiresIn: 360000 },
-                (err, token) => {
-                    if(err) throw err;
+                (error, token) => {
+                    if(error) throw error;
                     res.json({ token });
                 }
             );
-        } catch(err) {
-            console.log(err.message);
+        } catch(error) {
+            console.log(error.message);
             res.status(500).send('Sever error');
         }
     }
