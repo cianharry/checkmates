@@ -27,7 +27,7 @@ router.get('/', auth, async (req, res) => {
 // PERMISSION   Public
 router.post('/', [
     // Req_Id:  R01
-    // Test_Id: 
+    // Test_Id: T007
     check('email', 'Please enter a valid email').isEmail(),
     check('password', 'Password is a required field').exists()
     ],

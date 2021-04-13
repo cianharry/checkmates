@@ -9,14 +9,14 @@ const ProfileSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        required: true
+        required: true,
+        min: 16
     },
     gender: {
         type: String
     },
     bio: {
-        type: String,
-        min: 16
+        type: String
     },
     url: {
         type: String
