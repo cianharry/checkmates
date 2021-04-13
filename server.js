@@ -6,6 +6,9 @@ const app = express();
 // Connection to mongoDB
 connectDB();
 
+// Middleware for body parser
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => res.send('API test running'));
 
 // Define Routes to be used
