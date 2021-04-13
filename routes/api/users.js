@@ -2,22 +2,25 @@ const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 // REFERENCE https://express-validator.github.io/docs/
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
 
 // Unit Testing
-// Test_Ids: T003, T004
+// Test_Ids: T003, T004, T005, T006
 
 // Requirements
-// Req_Id: R01
+// Req_Id: R01, R02
 
 // > ROUTE        POST api/users
 // > DESC         Registartion route for user
 // > PERMISSION   Public
 router.post('/', [
     // implementing express router validation constraints on required attributes
+    // Req_Id: R02
     // Test_Id: T004
     check('name', 'Name is a required field')
         .not()
@@ -58,19 +61,33 @@ router.post('/', [
             });
             // encrypt password
             // generates the salt to be used for hashing - higher number is greater security but longer loading
+            // Test_Id: T005
             const salt = await bcrypt.genSalt(10);
 
             user.password = await bcrypt.hash(password, salt);
 
             await user.save();
             // return JWT for immediate login
-
-        res.send('User registration route');
-
+            // REFERENCE https://www.npmjs.com/package/jsonwebtoken 
+            // Req_Id: R02
+            // Test_Id: T006
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            }
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 360000 },
+                (err, token) => {
+                    if(err) throw err;
+                    res.json({ token });
+                }
+            );
         } catch(err) {
             console.log(err.message);
             res.status(500).send('Sever error');
-
         }
     }
 );
