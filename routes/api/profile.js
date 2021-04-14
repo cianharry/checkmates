@@ -96,4 +96,39 @@ router.post('/',
     }
 );
 
+// ROUTE        GET api/profile
+// DESC         Route to get a list of all user profiles
+// PERMISSION   Public
+// Req_Id:  R02
+// Test_Id: T010
+router.get('/', async (req, res) => {
+    try {
+        // getting all profiles and including name and avatar from associated user resource
+        const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+        res.json(profiles);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// ROUTE        GET api/profile/user/:user_id
+// DESC         Route to get a user profile by id
+// PERMISSION   Public
+// Req_Id:  R02
+// Test_Id: T011
+router.get('/user/:user_id', async (req, res) => {
+    try {
+        // getting all profiles and including name and avatar from associated user resource
+        const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name', 'avatar']);
+
+        if(!profile) return res.status(400).json({ msg: 'No profile found for the user provided' });
+
+        res.json(profile);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 module.exports = router;

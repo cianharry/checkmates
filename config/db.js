@@ -6,9 +6,12 @@ const db = config.get('mongoURI');
 const connectDB = async () => {
     try {
         await mongoose.connect(db, {
+            // mongoose deprecation warning handlers
+            // REFERENCE https://mongoosejs.com/docs/deprecations.html 
             useNewUrlParser: true,
             useCreateIndex: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useFindAndModify: false
         });
         console.log("MongoDB connected")
     } catch(err) {
