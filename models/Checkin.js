@@ -16,12 +16,18 @@ const CheckinSchema = new mongoose.Schema({
         required: true
     },
     intensity: {
-        type: String,
+        type: Number,
         required: true
     },
     maintext: {
         type: String,
         required: true
+    },
+    name: {
+        type: String
+    },
+    avatar: {
+        type: String
     },
     reactions: [
         {
@@ -38,24 +44,22 @@ const CheckinSchema = new mongoose.Schema({
                 ref: 'users'
             },
             text: {
-                type: String,
-                required: true
+                type: String
             },
             name: {
-                type: String,
+                type: String
             },
             avatar: {
-                type: String,
-                required: true
+                type: String
             },
             date: {
-                type: date,
+                type: Date,
                 default: Date.now
             }
         }
     ],
     date: {
-        type: date,
+        type: Date,
         default: Date.now
     }
 });

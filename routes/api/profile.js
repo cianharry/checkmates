@@ -4,7 +4,7 @@ const auth = require('../../middle/auth');
 const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
-const { findById } = require('../../models/Profile');
+// const { findById } = require('../../models/Profile');
 
 // ROUTE        GET api/profile/me
 // DESC         Route to get current user profile
