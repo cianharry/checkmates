@@ -33,7 +33,7 @@ const ProfileSchema = new mongoose.Schema({
             },
             dateAcheived: {
                 type: Date,
-                required: true
+                default: Date.now
             }
         }
     ],
