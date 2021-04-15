@@ -39,7 +39,7 @@ router.post('/',
 
         try {
             // get the user account by id
-            const user = await (await User.findById(req.user.id)).isSelected('-password');
+            const user = await User.findById(req.user.id).select('-password');
             // create the checkin from the user model and the request body
             const newCheckin = new Checkin({
                 user: req.user.id,
@@ -62,8 +62,65 @@ router.post('/',
 );
 
 // ROUTE        GET api/checkins
-// DESC         Test Route for users
-// PERMISSION   Public
-router.get('/', (req, res) => res.send('Checkins route'));
+// DESC         Route to get user checkins
+// PERMISSION   Private
+// Req_Id:      R03 - Create Checkin
+// Test_Id:     T016
+router.get('/', auth, async (req, res) => {
+    try {
+        // getting all checkins and sorting them by most recent date
+        const checkins = await Checkin.find().sort({ date: -1 });
+        res.json(checkins);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// ROUTE        GET api/checkins/:id
+// DESC         Route to get user checkin by id
+// PERMISSION   Private
+// Req_Id:      R03 - Create Checkin
+// Test_Id:     T017
+router.get('/:id', auth, async (req, res) => {
+    try {
+        // getting all checkins and sorting them by most recent date
+        const checkin = await Checkin.findById(req.params.id);
+        // check if the checkin exists
+        if(!checkin) return res.status(404).json({ msg: 'Checkin not found'});
+        res.json(checkin);
+    } catch (error) {
+        console.error(error.message);
+        // error response for an invalid checkin ObjectId
+        if(error.kind === 'ObjectId') return res.status(404).json({ msg: 'Checkin not found'});
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// ROUTE        DLETE api/checkins/:id
+// DESC         Route to delete a checkin by id
+// PERMISSION   Private
+// Req_Id:      R03 - Create Checkin
+// Test_Id:     T018
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        // getting the checkin by Id
+        const checkin = await Checkin.findById(req.params.id);
+        // ensuring the checkin exists
+        if(!checkin) return res.status(404).json({ msg: 'Checkin not found'});
+        // check to see if the current user is the checkin owner
+        if(checkin.user.toString() !== req.user.id) {
+            return res.status(401).send({ msg: 'User not authorized to complete this action' });
+        }
+        // delete the checkin 
+        await checkin.remove();
+        // send back the response
+        res.json({ msg: 'Checkin has been permanently deleted'});
+    } catch (error) {
+        console.error(error.message);
+        if(error.kind === 'ObjectId') return res.status(404).json({ msg: 'Checkin not found'});
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 module.exports = router;
