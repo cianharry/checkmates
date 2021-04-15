@@ -97,7 +97,7 @@ router.get('/:id', auth, async (req, res) => {
     }
 });
 
-// ROUTE        DLETE api/checkins/:id
+// ROUTE        DELETE api/checkins/:id
 // DESC         Route to delete a checkin by id
 // PERMISSION   Private
 // Req_Id:      R03 - Create Checkin
@@ -119,6 +119,31 @@ router.delete('/:id', auth, async (req, res) => {
     } catch (error) {
         console.error(error.message);
         if(error.kind === 'ObjectId') return res.status(404).json({ msg: 'Checkin not found'});
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// ROUTE        DELETE api/checkins/reaction/:id
+// DESC         Route add a reaction to a checkin
+// PERMISSION   Private
+// Req_Id:      R03 - Create Checkin
+// Test_Id:     T019
+router.put('/reaction/:id', auth, async (req, res) => {
+    try {
+        // getting the checkin using request params Id
+        const checkin = await Checkin.findById(req.params.id);
+        // ensuring the checkin has not already been reacted to by the current user
+        if(checkin.reactions.filter(reaction => reaction.user.toString() === req.user.id).length > 0 ) {
+            return res.status(400).json({ msg: 'User can only react to a post once' });
+        }
+        // add the new reaction (user id) to the reactions array
+        checkin.reactions.unshift({ user: req.user.id });
+        // save the udated checkin
+        await checkin.save();
+        // send back the reactions
+        res.json(checkin.reactions)
+    } catch (error) {
+        console.error(error.message);
         res.status(500).send('Internal Server Error');
     }
 });
