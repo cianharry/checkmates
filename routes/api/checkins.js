@@ -123,7 +123,7 @@ router.delete('/:id', auth, async (req, res) => {
     }
 });
 
-// ROUTE        DELETE api/checkins/reaction/:id
+// ROUTE        PUT api/checkins/reaction/:id
 // DESC         Route add a reaction to a checkin
 // PERMISSION   Private
 // Req_Id:      R03 - Create Checkin
@@ -147,5 +147,86 @@ router.put('/reaction/:id', auth, async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+// ROUTE        POST api/checkins/comment/:id
+// DESC         Route to add a comment to a checkin
+// PERMISSION   Private
+// Req_Id:      R03 - Create Checkin
+// Test_Id:     T020
+router.post('/comment/:id',
+    [auth,
+        [
+            check('text', 'Commments must contain text')
+                .not()
+                .isEmpty()
+        ]
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()) {
+            return res.status(400).send({ errors: errors.array() });
+        }
+
+        try {
+            // get the user account by id
+            const user = await User.findById(req.user.id).select('-password');
+            // get the checkin specified in the request params
+            const checkin = await Checkin.findById(req.params.id);
+            // create the checkin from the user model and the request body
+            const newComment = {
+                user: req.user.id,
+                text: req.body.text,
+                name: user.name,
+                avatar: user.avatar
+            };
+            // add the comment to the checkin 
+            checkin.comments.unshift(newComment);
+            // save the updated checkin with comment
+            await checkin.save();
+            // send back the checkin comments
+            res.json(checkin.comments);
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send('Internal Server Error')
+        }        
+    }
+);
+
+// ROUTE        DELETE api/checkins/comment/:id/comment_id
+// DESC         Route to delete a comment from a checkin
+// PERMISSION   Private
+// Req_Id:      R03 - Create Checkin
+// Test_Id:     T021
+router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
+    try {
+        // getting the checkin by Id
+        const checkin = await Checkin.findById(req.params.id);
+        // ensuring the checkin exists
+        if(!checkin) return res.status(404).json({ msg: 'Checkin not found'});
+        // get the checkin comment using the request params 
+        const comment = checkin.comments.find(comment => comment.id === req.params.comment_id);
+        // ensuring the comment exists
+        if(!comment) return res.status(404).json({ msg: 'Comment not found'});
+        // check if the current user owns the comment
+        if(comment.user.toString() !== req.user.id) return res.status(401).json({ msg: 'User not authorized to delete this comment'});
+        // map the comments to find the index of the comment
+        const remove = checkin.comments
+            .map(comment => comment.user.toString())
+            .indexOf(req.user.id);
+            // remove the checkin comment index
+            checkin.comments.splice(remove, 1);
+            // save the updated checkin
+            await checkin.save();
+            // send back the updated comments for the checkin
+            res.json(checkin.comments);
+
+    } catch (error) {
+        console.error(error.message);
+        if(error.kind === 'ObjectId') return res.status(404).json({ msg: 'Checkin not found'});
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 module.exports = router;
