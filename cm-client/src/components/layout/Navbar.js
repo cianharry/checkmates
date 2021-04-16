@@ -1,16 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     return (
-        <header class="masthead mb-auto">
-                <div class="inner">
-                <h3 class="masthead-brand">Checkm8s</h3>
-                <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link active" href="#">Dashboard</a>
-                    <a class="nav-link" href="#">Checkins</a>
-                    <a class="nav-link" href="#">Store</a>
+        <header className="masthead mb-auto">
+            <div className="inner">
+                <h1 className="masthead-brand">Checkmates</h1>
+                <nav className="nav nav-masthead justify-content-center">
+                    <Link className="nav-link active" to='/'>Dashboard</Link>
+                    <Link className="nav-link" to='/checkins'>Checkins</Link>
+                    <Link className="nav-link" to='/register'>Register</Link>
+                    <Link className="nav-link" to='/login'>Login</Link>
                 </nav>
-                </div>
+            </div>
         </header>
         
     )
