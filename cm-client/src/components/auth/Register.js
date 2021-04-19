@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setAlert } from '../../actions/alerts';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 
@@ -28,6 +29,8 @@ const Register = (props) => {
             console.log('Passwords do not match');
         }
         else {
+            // call the register action using the destructured form data
+            props.register({ name, email, password });
             console.log('Success');
             /* ------ TEST --------
             Req_Id:      R03 - Registration Validation
@@ -73,7 +76,8 @@ const Register = (props) => {
                             onChange={e => onChange(e)}
                             className="form-control"
                             placeholder="Full name"
-                            required />
+                            //required
+                            />
                         <input
                             type="email"
                             id="inputEmail"
@@ -82,12 +86,8 @@ const Register = (props) => {
                             onChange={e => onChange(e)}
                             className="form-control"
                             placeholder="Email address"
-                            required
+                            //required
                             autoFocus=""/>
-                        <p className="form-text">
-                            This site uses Gravatar so if you want a profile image, use a
-                            Gravatar email
-                        </p>
                         <input
                             type="password"
                             id="inputPassword"
@@ -96,8 +96,9 @@ const Register = (props) => {
                             onChange={e => onChange(e)}
                             className="form-control"
                             placeholder="Password"
-                            required
-                            minLength="8"/>
+                            //required
+                            //minLength="8"
+                            />
                         <input
                             type="password"
                             id="inputPassword2"
@@ -106,8 +107,9 @@ const Register = (props) => {
                             onChange={e => onChange(e)}
                             className="form-control"
                             placeholder="Confirm password"
-                            required
-                            minLength="8"/>
+                            //required
+                            //minLength="8"
+                            />
                         
                         <button
                             className="btn btn-lg btn-primary btn-block mt-5"
@@ -125,10 +127,11 @@ const Register = (props) => {
         
     )
 }
-
+// adding to prop types
 Register.propTypes = {
-    setAlert: PropTypes.func.isRequired
+    setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired,
 };
 
-// this allows us to access props.setAlert action
-export default connect(null, { setAlert })(Register);
+// this allows access to props.setAlert and props.register action
+export default connect(null, { setAlert, register })(Register);
