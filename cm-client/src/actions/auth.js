@@ -1,6 +1,33 @@
 import axios from 'axios';
 import { setAlert } from './alerts';
-import { REGISTRATION_SUCCESS, REGISTRATION_FAILURE } from './types';
+// importing the Auth token helper
+import setAuthToken from '../helpers/setAuthToken';
+// importing the action type constants 
+import { REGISTRATION_SUCCESS, REGISTRATION_FAILURE, USER_PRESENT, AUTH_FAILURE } from './types';
+
+// CHECK USER AUTH STATUS
+export const userPresent = () => async dispatch => {
+    // if there is a token in local storage call set auth token helper to add it to global headers
+    if(localStorage.token) {
+        setAuthToken(localStorage.token);
+    }
+
+    try {
+        // await the axios get request to the authentication api
+        const res = await axios.get('/api/auth');
+        // dispatching the user present action 
+        dispatch({
+            type: USER_PRESENT,
+            payload: res.data
+        });
+    } catch (error) {
+        // dispatching the auth failure action
+        dispatch({
+            type: AUTH_FAILURE
+        })
+    }
+}
+
 
 // REGISTER A USER
 export const register = ({ name, email, password}) => async dispatch => {
@@ -35,3 +62,4 @@ export const register = ({ name, email, password}) => async dispatch => {
         })
     }
 }
+

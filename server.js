@@ -19,4 +19,4 @@ app.use('/api/checkins', require('./routes/api/checkins'));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log('Server started on port '+PORT));
+app.listen(PORT, () => console.log('[SERVER] Server started on PORT: '+PORT));

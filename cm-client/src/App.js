@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
@@ -10,25 +10,40 @@ import Alert from './components/layout/Alert';
 import { Provider } from 'react-redux';
 // REDUX STORE
 import store from './store';
+import { userPresent } from './actions/auth';
+import setAuthToken from './helpers/setAuthToken';
+
+if(localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 
+const App = () => {
+  // useEffect hook
+  useEffect(() => {
+    // accessing the redux store to call the dispatch user present action (runs once)
+    store.dispatch(userPresent());
+  }, []);
 
-const App = () =>
-<Provider store={store}>
-  <Router>
-    <Fragment>
-      <Navbar/>
-      <Route exact path="/" component={ Home }/>
-      <section className="container">
-        <Alert/>
-        <Switch>
-          <Route exact path="/login" component={ Login } />
-          <Route exact path="/register" component={ Register } />
-        </Switch>
-      </section>
-    </Fragment>
-  </Router>
-</Provider>
+  return (
+    <Provider store={store}>
+        <Router>
+          <Fragment>
+            <Navbar/>
+            <Route exact path="/" component={ Home }/>
+            <section className="container">
+              <Alert/>
+              <Switch>
+                <Route exact path="/login" component={ Login } />
+                <Route exact path="/register" component={ Register } />
+              </Switch>
+            </section>
+          </Fragment>
+        </Router>
+    </Provider>
+  )
+};
+
 
   
 

@@ -6,7 +6,6 @@ import { setAlert } from '../../actions/alerts';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-
 const Register = (props) => {
     // setting the initial state of the formData constant
     const [formData, setFormData] = useState({
