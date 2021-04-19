@@ -103,9 +103,13 @@ body {
   color: #0a2929;
 }
 
-/*
- * ----------------- Move to Auth.css -----------------
- */
+.alert {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
 
 .form-signin {
   width: 100%;
@@ -134,4 +138,21 @@ body {
 input[type='text'] {
   margin-bottom: 10px;
   border-radius: 4px;
+}
+
+/*
+ * -------- Move to ALERT.css -----------
+ */
+
+.alert {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  color: #0a2929;
+  text-align: center;
+}
+
+.alert-danger {
+  background: #e60000;
+  color: #fff;
 }

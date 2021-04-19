@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     return (
-        <header className="masthead mb-auto">
+        <header className="masthead">
             <div className="inner">
                 <h1 className="masthead-brand">Checkmates</h1>
                 <nav className="nav nav-masthead justify-content-center">

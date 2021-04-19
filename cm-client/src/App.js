@@ -5,6 +5,7 @@ import Home from './components/layout/Home';
 import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Alert from './components/layout/Alert';
 // Wrapper for combining React and Redux
 import { Provider } from 'react-redux';
 // REDUX STORE
@@ -18,10 +19,11 @@ const App = () =>
     <Fragment>
       <Navbar/>
       <Route exact path="/" component={ Home }/>
-      <Route exact path="/register" component={ Register }/>
       <section className="container">
+        <Alert/>
         <Switch>
-          <Route exact path="/login" component={ Login }/>
+          <Route exact path="/login" component={ Login } />
+          <Route exact path="/register" component={ Register } />
         </Switch>
       </section>
     </Fragment>
