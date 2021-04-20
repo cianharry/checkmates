@@ -6,6 +6,8 @@ import './App.css';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/router/PrivateRoute';
 // Wrapper for combining React and Redux
 import { Provider } from 'react-redux';
 // REDUX STORE
@@ -32,19 +34,18 @@ const App = () => {
         <Router>
           <Fragment>
             <Navbar/>
-            <section className="">
-             
+            <section className="container">
               <Route exact path="/" component={ Home }/>
               <Alert/>
               <Switch>
                 <Route exact path="/login" component={ Login } />
                 <Route exact path="/register" component={ Register } />
+                <PrivateRoute exact path="/dashboard" component={ Dashboard } />
               </Switch>
               <div className="symbol">
                   <img src={symbol} alt='logo' style={{opacity: '0.5'}}/>
               </div>
             </section>
-            
           </Fragment>
         </Router>
     </Provider>
