@@ -15,9 +15,11 @@ const Home = () => {
                 </p>
             </main>
 
+            
+
             <footer className="mastfoot mt-auto">
                 <div className="inner">
-                <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                <p>For professional medical support, please contact the <a href="https://www.hse.ie/eng/services/list/4/mental-health-services/">HSE</a>, provided by <a href="/">Checkmates</a>.</p>
                 </div>
             </footer>
             </div>

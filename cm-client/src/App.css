@@ -31,7 +31,7 @@ body {
 
 body {
   justify-content: center;
-  color: #fff;
+  color: #0a2929;
 }
 
 /*
@@ -60,7 +60,7 @@ body {
   border-bottom-color: #0a2929;
 }
 
-.nav-masthead .nav-link + .nav-link {
+.nav-link + .nav-link {
   margin-left: 1rem;
 }
 
@@ -82,11 +82,10 @@ body {
  * Cover
  */
 .cover {
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 .cover .btn-lg {
-  font-weight: 700;
-  color: #33cccc;
+  color: #fff;
 }
 
 /*
@@ -140,4 +139,10 @@ input[type='text'] {
 .alert-danger {
   background: #e60000;
   color: #fff;
+}
+
+.symbol img {
+  position: absolute;
+  margin: 0 auto;
+  z-index: 0;
 }

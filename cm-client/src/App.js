@@ -12,6 +12,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { userPresent } from './actions/auth';
 import setAuthToken from './helpers/setAuthToken';
+import symbol from './assets/Enso.png'
+
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
@@ -30,14 +32,19 @@ const App = () => {
         <Router>
           <Fragment>
             <Navbar/>
-            <Route exact path="/" component={ Home }/>
-            <section className="container">
+            <section className="">
+             
+              <Route exact path="/" component={ Home }/>
               <Alert/>
               <Switch>
                 <Route exact path="/login" component={ Login } />
                 <Route exact path="/register" component={ Register } />
               </Switch>
+              <div className="symbol">
+                  <img src={symbol} alt='logo' style={{opacity: '0.5'}}/>
+              </div>
             </section>
+            
           </Fragment>
         </Router>
     </Provider>
