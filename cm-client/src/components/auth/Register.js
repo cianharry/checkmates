@@ -80,7 +80,7 @@ const Register = (props) => {
                             onChange={e => onChange(e)}
                             className="form-control"
                             placeholder="Full name"
-                            //required
+                            required
                             />
                         <input
                             type="email"
@@ -90,7 +90,7 @@ const Register = (props) => {
                             onChange={e => onChange(e)}
                             className="form-control"
                             placeholder="Email address"
-                            //required
+                            required
                             autoFocus=""/>
                         <input
                             type="password"
@@ -100,8 +100,8 @@ const Register = (props) => {
                             onChange={e => onChange(e)}
                             className="form-control"
                             placeholder="Password"
-                            //required
-                            //minLength="8"
+                            required
+                            minLength="8"
                             />
                         <input
                             type="password"
@@ -111,8 +111,8 @@ const Register = (props) => {
                             onChange={e => onChange(e)}
                             className="form-control"
                             placeholder="Confirm password"
-                            //required
-                            //minLength="8"
+                            required
+                            minLength="8"
                             />
                         
                         <button

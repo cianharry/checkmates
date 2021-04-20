@@ -17,5 +17,5 @@ export const setAlert = (msg, alertType, timeout = 5000) => dispatch => {
     // triggers the removal of the alert from the state, using the universal id, after a timeout of 5 seconds
     // Req_Id:      R0
     // Test_Id:     T025
-    //setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id}), timeout);
+    setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id}), timeout);
 };

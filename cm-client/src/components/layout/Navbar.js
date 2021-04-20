@@ -1,25 +1,55 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { logout } from '../../actions/auth'
 import symbol from '../../assets/EnsoThumb.png'
 
-const Navbar = () => {
+const Navbar = (props) => {
+    // setting the links for authenticated users
+    // Req_Id:      R0 - 
+    // Test_Id:     T032
+
+    // Req_Id:      R03 - User experience
+    // Test_Id:     T033 - LOGOUT
+    const userLinks = (
+        <nav className="nav nav-masthead justify-content-center">
+            <Link className="nav-link active" to='/dashboard'>Dashboard</Link>
+            <Link className="nav-link" to='/checkins'>Checkins</Link>
+            <Link className="nav-link" onClick={props.logout} to='/logout'>Logout</Link>
+        </nav>
+    );
+    // setting the links for guest users
+    // Req_Id:      R0 - 
+    // Test_Id:     T031
+    const guestLinks = (
+        <nav className="nav nav-masthead justify-content-center">    
+            <Link className="nav-link active" to='/'>Home</Link>
+            <Link className="nav-link" to='/register'>Register</Link>
+            <Link className="nav-link" to='/login'>Login</Link>
+        </nav>
+    );
+    // ternary expression used to display links depending on the user auth state recieved from props
     return (
         <header className="masthead">
-            
             <div className="inner">
-                <img src={symbol} alt='logo'  style={{opacity: '0.85', float: 'left'}}/>
-                <h1 className="masthead-brand pl-2">Checkmates</h1>
-                <nav className="nav nav-masthead justify-content-center">
-                
-                    <Link className="nav-link active" to='/'>Dashboard</Link>
-                    <Link className="nav-link" to='/checkins'>Checkins</Link>
-                    <Link className="nav-link" to='/register'>Register</Link>
-                    <Link className="nav-link" to='/login'>Login</Link>
-                </nav>
+                <img src={symbol} alt='logo'  style={{float: 'left'}}/>
+                <Link className="masthead-brand pl-2 h2" to='/'>Checkmates</Link>
+                { !props.auth.loading && (<Fragment>{ props.auth.isAuthenticated ? userLinks : guestLinks }</Fragment>)}
             </div>
         </header>
         
     )
 }
 
-export default Navbar;
+Navbar.propTypes = {
+    logout: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+}
+
+// mapping the auth state to props
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

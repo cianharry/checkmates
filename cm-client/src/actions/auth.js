@@ -3,7 +3,7 @@ import { setAlert } from './alerts';
 // importing the Auth token helper
 import setAuthToken from '../helpers/setAuthToken';
 // importing the action type constants 
-import { REGISTRATION_SUCCESS, REGISTRATION_FAILURE, USER_PRESENT, AUTH_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
+import { REGISTRATION_SUCCESS, REGISTRATION_FAILURE, USER_PRESENT, AUTH_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from './types';
 
 // CHECK USER AUTH STATUS
 export const userPresent = () => async dispatch => {
@@ -99,5 +99,10 @@ export const login = ( email, password ) => async dispatch => {
             type: LOGIN_FAILURE
         });
     }
+}
+
+// Logout user and clear the user profile
+export const logout = () => dispatch => {
+    dispatch({ type: LOGOUT });
 }
 
