@@ -1,8 +1,12 @@
 // Importing React, Fragment as container component, and useState for state management using hooks
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { login } from '../../actions/auth'
 
-const Login = () => {
+
+const Login = (props) => {
     // setting the initial state of the formData constant
     const [formData, setFormData] = useState({
         email: '',
@@ -15,7 +19,13 @@ const Login = () => {
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const onSubmit = async e => {
         e.preventDefault();
-        console.log('Success');
+        // triggers the login action from props
+        props.login(email, password);
+    };
+
+    // Redirect user if logged in
+    if(props.isAuth) {
+        return <Redirect to="/dashboard"/>
     }
 
     return (
@@ -61,6 +71,15 @@ const Login = () => {
             </div>
         </Fragment>
     )  
-}
+};
+// adding actions to prop types
+Login.propTypes = {
+    login: PropTypes.func.isRequired,
+    isAuth: PropTypes.bool
+};
+// adding is authenticated boolean to props
+const mapStateToProps = state => ({
+    isAuth: state.auth.isAuthenticated
+});
 
-export default Login
+export default connect(mapStateToProps, { login })(Login)

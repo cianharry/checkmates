@@ -1,5 +1,5 @@
 // reducer that handles authentication based off application state changes
-import  { REGISTRATION_SUCCESS, REGISTRATION_FAILURE, USER_PRESENT, AUTH_FAILURE } from '../actions/types';
+import  { REGISTRATION_SUCCESS, REGISTRATION_FAILURE, USER_PRESENT, AUTH_FAILURE, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/types';
 // initialising auth state
 const initState = {
     // attempting to fetch token that exists in local storage
@@ -19,6 +19,7 @@ export default function auth(state = initState, action) {
                 user: action.payload
             }
         case REGISTRATION_SUCCESS:
+        case LOGIN_SUCCESS:
             // adding the token to local storage
             localStorage.setItem('token', action.payload.token);
             // returning successful auth state
@@ -31,6 +32,7 @@ export default function auth(state = initState, action) {
             }
         case REGISTRATION_FAILURE:
         case AUTH_FAILURE:
+        case LOGIN_FAILURE:
             // removing the invalid token from local storage
             localStorage.removeItem('token');
             // returning failed auth state

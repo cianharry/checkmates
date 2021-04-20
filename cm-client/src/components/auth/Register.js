@@ -1,7 +1,7 @@
 // Importing React, Fragment as container component, and useState for state management using hooks
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alerts';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
@@ -61,6 +61,11 @@ const Register = (props) => {
             
         }
     }
+    // Redirect user if logged in
+    if(props.isAuth) {
+        return <Redirect to="/dashboard"/>
+    }
+
     return (
         <Fragment>
             <div className="h-100 col-md-10 p-3 mx-auto ">
@@ -130,7 +135,12 @@ const Register = (props) => {
 Register.propTypes = {
     setAlert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
+    isAuth: PropTypes.bool
 };
+// adding is authenticated boolean to props
+const mapStateToProps = state => ({
+    isAuth: state.auth.isAuthenticated
+});
 
 // this allows access to props.setAlert and props.register action
-export default connect(null, { setAlert, register })(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);
