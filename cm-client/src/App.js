@@ -15,6 +15,7 @@ import store from './store';
 import { userPresent } from './actions/auth';
 import setAuthToken from './helpers/setAuthToken';
 import symbol from './assets/Enso.png'
+import CreateProfile from './components/profile_forms/CreateProfile';
 
 
 if(localStorage.token) {
@@ -45,10 +46,9 @@ const App = () => {
                 <Route exact path="/login" component={ Login } />
                 <Route exact path="/register" component={ Register } />
                 <PrivateRoute exact path="/dashboard" component={ Dashboard } />
+                <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
+
               </Switch>
-              <div className="symbol">
-                  <img src={symbol} alt='logo' style={{opacity: '0.5'}}/>
-              </div>
             </section>
             </div>
             

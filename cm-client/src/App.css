@@ -27,6 +27,8 @@ html,
 body {
   height: 100%;
   background-color: #33cccc;
+  background-image: url('./assets/Enso.png');
+  background-repeat: no-repeat;
 }
 
 body {
@@ -182,9 +184,6 @@ input[type='text'] {
 .mainheading {
   color: #0a2929;
 }
-.test {
-  background-color: #0a2929;
-}
 
 /* Utilities */
 .container {
@@ -215,4 +214,39 @@ input[type='text'] {
 
 .text-center {
   text-align: center;
+}
+
+.form .social-input {
+  display: flex;
+}
+
+.form .social-input i {
+  padding: 0.5rem;
+  width: 4rem;
+}
+
+.form .social-input i.fa-twitter {
+  color: #38a1f3;
+}
+.form .social-input i.fa-facebook {
+  color: #3b5998;
+}
+.form .social-input i.fa-instagram {
+  color: #0a2929;
+}
+.form .social-input i.fa-youtube {
+  color: #c4302b;
+}
+
+.form {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.form-control {
+  background-color: #0a2929;
+  color: #fff;
+}
+input {
+  color: #fff;
 }
