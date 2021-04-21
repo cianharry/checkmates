@@ -1,4 +1,4 @@
-import { GET_USER_PROFILE, PROFILE_ERROR } from '../actions/types';
+import { GET_USER_PROFILE, PROFILE_ERROR, CLEAR_USER_PROFILE } from '../actions/types';
 
 // initiliazing profile state
 const initState = {
@@ -20,6 +20,12 @@ export default function profile(state = initState, action) {
             return {
                 ...state,
                 error: action.payload
+            }
+        case CLEAR_USER_PROFILE:
+            return {
+                ...state,
+                profile: null,
+                loading: false
             }
         default:
             return state;

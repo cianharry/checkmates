@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import React from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-const Home = () => {
+const Home = (props) => {
+    // redirect if user logged in
+    if(props.isAuth) {
+        return <Redirect to='/dashboard'/>
+    }
     return (
         <div className="text-center">
             <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
@@ -27,4 +33,12 @@ const Home = () => {
     )
 }
 
-export default Home
+Home.propTypes = {
+    isAuth: PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+    isAuth: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps)(Home)

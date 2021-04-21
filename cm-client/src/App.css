@@ -142,7 +142,77 @@ input[type='text'] {
 }
 
 .symbol img {
-  position: absolute;
-  margin: 0 auto;
   z-index: 0;
+  text-align: center;
+}
+
+/* Mobile Styles */
+@media (max-width: 700px) {
+  .container {
+    margin-top: 8rem;
+  }
+
+  .symbol img {
+    display: none;
+  }
+
+  .hide-sm {
+    display: none;
+  }
+
+  /* Navbar */
+  .nav {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar ul {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .navbar h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+/*
+ * -------- Move to DASHBOARD.css -----------
+ */
+.mainheading {
+  color: #0a2929;
+}
+.test {
+  background-color: #0a2929;
+}
+
+/* Utilities */
+.container {
+  max-width: 1600px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Text Styles*/
+.x-large {
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
 }

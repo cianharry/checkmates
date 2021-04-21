@@ -14,9 +14,22 @@ const Navbar = (props) => {
     // Test_Id:     T033 - LOGOUT
     const userLinks = (
         <nav className="nav nav-masthead justify-content-center">
-            <Link className="nav-link active" to='/dashboard'>Dashboard</Link>
-            <Link className="nav-link" to='/checkins'>Checkins</Link>
-            <Link className="nav-link" onClick={props.logout} to='/logout'>Logout</Link>
+            <Link
+                className="nav-link"
+                to='/dashboard'>
+                    <i className='far fa-user-circle'/> <span className='hide-sm'> Dashboard</span>
+            </Link>
+            <Link
+                className="nav-link"
+                to='/checkins'><i className='fas fa-pencil-alt'/><span className='hide-sm'> Checkins</span>
+            </Link>
+            
+            <Link
+                className="nav-link"
+                onClick={props.logout}
+                to='/logout'>
+                    <i className='fas fa-power-off'/><span className='hide-sm'> Logout</span> 
+            </Link>
         </nav>
     );
     // setting the links for guest users
@@ -24,7 +37,7 @@ const Navbar = (props) => {
     // Test_Id:     T031
     const guestLinks = (
         <nav className="nav nav-masthead justify-content-center">    
-            <Link className="nav-link active" to='/'>Home</Link>
+            <Link className="nav-link" to='/'>Home</Link>
             <Link className="nav-link" to='/register'>Register</Link>
             <Link className="nav-link" to='/login'>Login</Link>
         </nav>
@@ -34,7 +47,7 @@ const Navbar = (props) => {
         <header className="masthead">
             <div className="inner">
                 <img src={symbol} alt='logo'  style={{float: 'left'}}/>
-                <Link className="masthead-brand pl-2 h2" to='/'>Checkmates</Link>
+                <Link className="masthead-brand h2" to='/'>Checkmates</Link>
                 { !props.auth.loading && (<Fragment>{ props.auth.isAuthenticated ? userLinks : guestLinks }</Fragment>)}
             </div>
         </header>

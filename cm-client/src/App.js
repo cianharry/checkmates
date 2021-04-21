@@ -33,8 +33,12 @@ const App = () => {
     <Provider store={store}>
         <Router>
           <Fragment>
+            <div className="test">
+              
+            </div>
+            <div className="container">
             <Navbar/>
-            <section className="container">
+            <section className="">
               <Route exact path="/" component={ Home }/>
               <Alert/>
               <Switch>
@@ -46,6 +50,8 @@ const App = () => {
                   <img src={symbol} alt='logo' style={{opacity: '0.5'}}/>
               </div>
             </section>
+            </div>
+            
           </Fragment>
         </Router>
     </Provider>
