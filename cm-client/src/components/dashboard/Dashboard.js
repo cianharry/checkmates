@@ -4,11 +4,14 @@ import { connect } from 'react-redux'
 import { getCurrentUser } from '../../actions/profile'
 // REFERENCE https://www.educative.io/edpresso/how-to-create-a-loading-spinner-in-react
 import { Spinner } from 'react-bootstrap';
+import  Actions  from './Actions';
 import { Link } from 'react-router-dom';
 
 // destructuring props
 const Dashboard = ({getCurrentUser, auth, profile}) => {
     useEffect(() => {
+        // Req_Id: R0 
+        // Test_Id: T034
         getCurrentUser();
     }, [])
     return profile.loading && profile.profile === null ? (
@@ -23,8 +26,12 @@ const Dashboard = ({getCurrentUser, auth, profile}) => {
                 <i className="fas fa-user pr-2"></i> 
                 Welcome back { auth.user && auth.user.name }
             </p>
+            {/*
+            // Req_Id: R0 
+            // Test_Id: T035
+            */}
             { profile.profile !== null ? (
-                <Fragment>Has a profile</Fragment>
+                <Fragment><Actions/></Fragment>
             ) : (
                 <Fragment>
                     <p>You need to add your profile information before accessing the checkmates dashboard </p>

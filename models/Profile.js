@@ -8,7 +8,8 @@ const ProfileSchema = new mongoose.Schema({
         ref: 'user'
     },
     experience: {
-        type: String 
+        type: String, 
+        required: true
     },
     age: {
         type: Number,

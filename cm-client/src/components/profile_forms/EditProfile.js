@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { createUserProfile } from '../../actions/profile'
+import { createUserProfile, getCurrentUser } from '../../actions/profile'
+import profile from '../../reducers/profile'
 
-const CreateProfile = (props) => {
+const EditProfile = (props) => {
     // initializing from data 
     const [formData, setFormData] = useState({
         experience: '',
@@ -18,6 +19,24 @@ const CreateProfile = (props) => {
     })
     // used to toggle the social media input fields
     const [displaySocial, toggleSocial] = useState(false);
+    //
+    useEffect(() => {
+        // get the current user profile using the profile action
+        getCurrentUser()
+        // if the component is loading or any of the fields arent present in the state then show blank
+        // otherwise show the existing state profile feilds 
+        setFormData({
+            experience: props.profile.loading || !props.profile.profile.experience ? '' : props.profile.profile.experience,
+            age: props.profile.loading || !props.profile.profile.age ? 0 : props.profile.profile.age,
+            gender: props.profile.loading || !props.profile.profile.gender ? '' : props.profile.profile.gender,
+            bio: props.profile.loading || !props.profile.profile.bio ? '' : props.profile.profile.bio,
+            youtube: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.youtube,
+            instagram: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.instagram,
+            facebook: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.facebook,
+            twitter: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.twitter,
+        })
+        // dependant on props.loading 
+    }, [props.profile.loading])
 
     // destructuring constants from form data
     const {
@@ -36,9 +55,10 @@ const CreateProfile = (props) => {
     // calling the create profile action on form submission
     const onSubmit = async e => {
         e.preventDefault();
+        // setting edit to true to signify its an edit action
         // Req_Id: R0 
-        // Test_Id: T038
-        props.createUserProfile(formData, props.history)
+        // Test_Id: T039
+        props.createUserProfile(formData, props.history, true)
     }
 
     return (
@@ -168,9 +188,15 @@ const CreateProfile = (props) => {
     )
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
     createUserProfile: PropTypes.func.isRequired,
+    getCurrentUser: PropTypes.func.isRequired,
+    profile: PropTypes.object.isRequired,
 }
 
+const mapStateToProps = state => ({
+    profile: state.profile
+})
+
 // withRouter allows us to pass in the history object for redirect
-export default connect(null, { createUserProfile })(withRouter(CreateProfile))
+export default connect(mapStateToProps,{ createUserProfile, getCurrentUser })(withRouter(EditProfile))

@@ -50,6 +50,7 @@ router.post('/',
         }
         // destructuring the request body
         const {
+            experience,
             age,
             gender,
             bio,
@@ -64,6 +65,7 @@ router.post('/',
         const profileFields = {};
         profileFields.user = req.user.id;
         profileFields.age = age;
+        profileFields.experience = experience;
         if (gender) profileFields.gender = gender;
         if (bio) profileFields.bio = bio;
         if (url) profileFields.url = url;

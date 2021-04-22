@@ -102,6 +102,8 @@ export const login = ( email, password ) => async dispatch => {
 }
 
 // Logout user and clear the user profile
+// Req_Id: R0 
+// Test_Id: T036
 export const logout = () => dispatch => {
     dispatch({
         type: CLEAR_USER_PROFILE

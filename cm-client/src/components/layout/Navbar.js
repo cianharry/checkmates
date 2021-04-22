@@ -21,7 +21,7 @@ const Navbar = (props) => {
             </Link>
             <Link
                 className="nav-link"
-                to='/checkins'><i className='fas fa-pencil-alt'/><span className='hide-sm'> Checkins</span>
+                to='/checkins'><i className='fas fa-calendar-check'/><span className='hide-sm'> Checkins</span>
             </Link>
             
             <Link
