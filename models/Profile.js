@@ -7,6 +7,9 @@ const ProfileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'user'
     },
+    experience: {
+        type: String 
+    },
     age: {
         type: Number,
         required: true,

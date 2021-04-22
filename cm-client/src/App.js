@@ -14,7 +14,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { userPresent } from './actions/auth';
 import setAuthToken from './helpers/setAuthToken';
-import symbol from './assets/Enso.png'
 import CreateProfile from './components/profile_forms/CreateProfile';
 
 

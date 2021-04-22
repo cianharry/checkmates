@@ -142,6 +142,10 @@ input[type='text'] {
   background: #e60000;
   color: #fff;
 }
+.alert-success {
+  background: #006600;
+  color: #fff;
+}
 
 .symbol img {
   z-index: 0;

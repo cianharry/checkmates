@@ -1,10 +1,13 @@
 import React, { Fragment, useState } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { createUserProfile } from '../../actions/profile'
 
-const CreateProfile = props => {
+const CreateProfile = (props) => {
     // initializing from data 
     const [formData, setFormData] = useState({
+        experience: '',
         age: 0,
         gender: '',
         bio: '',
@@ -18,6 +21,7 @@ const CreateProfile = props => {
 
     // destructuring constants from form data
     const {
+        experience,
         age,
         gender,
         bio,
@@ -27,8 +31,14 @@ const CreateProfile = props => {
         twitter
     } = formData
     // using a spread operator to copy the form data
-    // using the onChange target to define what formData input filed should be updated
+    // using the onChange target to define what formData input feildd should be updated
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    // calling the create profile action on form submission
+    const onSubmit = async e => {
+        e.preventDefault();
+        props.createUserProfile(formData, props.history)
+    }
+
     return (
         <Fragment>
             <h1 className="large">
@@ -36,7 +46,7 @@ const CreateProfile = props => {
             </h1>
             
             
-            <form className="form">
+            <form className="form" onSubmit={e => onSubmit(e)}>
             <p style={{color: 'white'}} className="lead">
                 <i  className="fas fa-user"></i> Let's start by getting some basic profile information to help with your experience
             </p>
@@ -44,7 +54,11 @@ const CreateProfile = props => {
                     Give us an idea of where you are at in your personal journey with mental health
                 </p>
                 <div className="form-group">
-                    <select onChange={e => onChange(e)} className='form-control' name="experience">
+                    <select
+                     onChange={e => onChange(e)}
+                     className='form-control'
+                     name="experience"
+                     value={experience} >
                         <option value="0">* Select Experience</option>
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
@@ -157,7 +171,8 @@ const CreateProfile = props => {
 }
 
 CreateProfile.propTypes = {
-
+    createUserProfile: PropTypes.func.isRequired,
 }
 
-export default CreateProfile
+// withRouter allows us to pass in the history object for redirect
+export default connect(null, { createUserProfile })(withRouter(CreateProfile))
