@@ -34,12 +34,8 @@ const App = () => {
     <Provider store={store}>
         <Router>
           <Fragment>
-            <div className="test">
-              
-            </div>
-            <div className="container">
             <Navbar/>
-            <section className="">
+            <section className="container">
               <Route exact path="/" component={ Home }/>
               <Alert/>
               <Switch>
@@ -51,7 +47,6 @@ const App = () => {
                 <PrivateRoute exact path="/add-milestone" component={ AddMilestone } />
               </Switch>
             </section>
-            </div>
             
           </Fragment>
         </Router>

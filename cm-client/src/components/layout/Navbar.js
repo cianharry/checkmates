@@ -36,7 +36,7 @@ const Navbar = (props) => {
     // Req_Id:      R0 - 
     // Test_Id:     T031
     const guestLinks = (
-        <nav className="nav nav-masthead justify-content-center">    
+        <nav className="nav nav-masthead ">    
             <Link className="nav-link" to='/'>Home</Link>
             <Link className="nav-link" to='/register'>Register</Link>
             <Link className="nav-link" to='/login'>Login</Link>

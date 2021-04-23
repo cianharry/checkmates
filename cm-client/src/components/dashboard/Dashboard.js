@@ -7,9 +7,10 @@ import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import  Actions  from './Actions';
 import Milestone from './Milestone';
+import { deleteUser } from '../../actions/profile';
 
 // destructuring props
-const Dashboard = ({getCurrentUser, auth, profile}) => {
+const Dashboard = ({getCurrentUser, deleteUser, auth, profile}) => {
     useEffect(() => {
         // Req_Id: R0 
         // Test_Id: T034
@@ -35,6 +36,9 @@ const Dashboard = ({getCurrentUser, auth, profile}) => {
                 <Fragment>
                     <Actions/>
                     <Milestone milestones={profile.profile.milestones} />
+                    <div className="my-2">
+                        <button onClick={() => deleteUser() } className="btn btn-danger">Delete Account</button>
+                    </div>
                 </Fragment>
             ) : (
                 <Fragment>
@@ -49,6 +53,7 @@ const Dashboard = ({getCurrentUser, auth, profile}) => {
 }
 
 Dashboard.propTypes = {
+    deleteUser: PropTypes.func.isRequired,
     getCurrentUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
@@ -56,7 +61,7 @@ Dashboard.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    profile: state.profile
+    profile: state.profile,
 })
 
-export default connect(mapStateToProps, { getCurrentUser })(Dashboard)
+export default connect(mapStateToProps, { getCurrentUser, deleteUser })(Dashboard)

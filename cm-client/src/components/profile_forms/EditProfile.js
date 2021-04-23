@@ -68,7 +68,7 @@ const EditProfile = (props) => {
             
             
             <form className="form" onSubmit={e => onSubmit(e)}>
-            <p style={{color: 'white'}} className="lead">
+            <p className="lead">
                 <i  className="fas fa-user"></i> Let's start by getting some basic profile information to help with your experience
             </p>
                 <p>

@@ -3,9 +3,13 @@ import PropTypes from 'prop-types'
 // REFERENCE - https://www.npmjs.com/package/react-moment
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
+import { deleteMilestone } from '../../actions/profile'
+
 
 const Milestone = props => {
     // if milestones exist each one is being map to its own row in the table
+    // Req_Id:      R - Display Profile Milestones
+    // Test_Id:     T042
     const milestones = props.milestones && props.milestones.map(ms => (
         <tr key={ms._id}>
             <td>{ms.title}</td>
@@ -15,7 +19,7 @@ const Milestone = props => {
             </td>
             <td>{ms.privacy = true ? 'Private' : 'Public' }</td>
             <td>
-                <button className="btn btn-danger">Remove</button>
+                <button onClick={() => props.deleteMilestone(ms._id)} className="btn btn-danger">Remove</button>
             </td>
         </tr>
     ));
@@ -23,13 +27,13 @@ const Milestone = props => {
         <Fragment>
             <h2 className="my-2">Personal Milestones</h2>
 
-            <table className="table table-hover">
+            <table className="table table-striped table-light">
                 <thead>
                     <tr>
                         <th>Title</th>
                         <th className='hide-sm'>Description</th>
                         <th className='hide-sm'>Date</th>
-                        <th className='hide-sm'>Privacy Status</th>
+                        <th className='hide-sm'>Status</th>
                         <th></th>
                     </tr>  
                 </thead>
@@ -45,6 +49,7 @@ const Milestone = props => {
 
 Milestone.propTypes = {
     milestones: PropTypes.array.isRequired,
+    deleteMilestone: PropTypes.func.isRequired,
 }
 
-export default Milestone
+export default connect(null, { deleteMilestone })(Milestone)

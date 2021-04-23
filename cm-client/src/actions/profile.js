@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { setAlert } from './alerts'
 
-import { GET_USER_PROFILE, UPDATE_USER_PROFILE, PROFILE_ERROR } from './types'
+import { GET_USER_PROFILE, UPDATE_USER_PROFILE, CLEAR_USER_PROFILE, PROFILE_ERROR, DELETE_USER } from './types'
 
 // action to get current user's profile
 export const getCurrentUser = () => async dispatch => {
@@ -92,5 +92,49 @@ export const addMilestone = (formData, history) => async dispatch => {
             type: PROFILE_ERROR,
             payload: {msg: error.response.statusText, status: error.response.status}
         })
+    }
+}
+
+// Delete Milestone from Profile
+export const deleteMilestone = id => async dispatch => {
+    try {
+        const res = await axios.delete(`/api/profile/milestone/${id}`)
+
+        dispatch({
+            type: UPDATE_USER_PROFILE,
+            payload: res.data
+        })
+        // dispatching the setAlert action to notify the user that the milestone is added
+        // Req_Id:      R - Milestone deletion
+        // Test_Id:     T043
+        dispatch(setAlert('Milestone succesfully removed from User Profile ', 'success'))
+
+    } catch (error) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: error.response.statusText, status: error.response.status}
+        })
+    }
+}
+
+// Delete User account and dependent profile
+export const deleteUser = () => async dispatch => {
+    if(window.confirm('Are you certain, this action cannot be reversed')) {
+        try {
+            const res = await axios.delete('/api/profile')
+            
+            dispatch({ type: CLEAR_USER_PROFILE })
+            dispatch({ type: DELETE_USER })
+            // dispatching the setAlert action to notify the user that their account is deleted
+            // Req_Id:      R - Account deletion
+            // Test_Id:     T044
+            dispatch(setAlert('Checkmates account has been deleted', 'danger'))
+    
+        } catch (error) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: {msg: error.response.statusText, status: error.response.status}
+            })
+        }
     }
 }

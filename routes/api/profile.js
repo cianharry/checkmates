@@ -4,8 +4,8 @@ const auth = require('../../middle/auth');
 const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
-// const { findById } = require('../../models/Profile');
-
+const User = require('../../models/User');
+const Checkin = require('../../models/Checkin');
 // ROUTE        GET api/profile/me
 // DESC         Route to get current user profile
 // PERMISSION   Private
@@ -141,8 +141,8 @@ router.get('/user/:user_id', async (req, res) => {
 // Test_Id:     T012
 router.delete('/', auth,  async (req, res) => {
     try {
-        // TODO remove user checkins
-
+        // Remove user checkins on account deletion
+        await Checkin.deleteMany({ user: req.user.id })
         // finding the user profile and removing
         await Profile.findOneAndRemove({ user: req.user.id });
         // Remove the user account
