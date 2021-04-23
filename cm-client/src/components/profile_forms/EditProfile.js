@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createUserProfile, getCurrentUser } from '../../actions/profile'
-import profile from '../../reducers/profile'
 
 const EditProfile = (props) => {
     // initializing from data 
@@ -22,7 +21,7 @@ const EditProfile = (props) => {
     //
     useEffect(() => {
         // get the current user profile using the profile action
-        getCurrentUser()
+        props.getCurrentUser()
         // if the component is loading or any of the fields arent present in the state then show blank
         // otherwise show the existing state profile feilds 
         setFormData({

@@ -35,6 +35,9 @@ const ProfileSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
+            privacy: {
+                type: Boolean            
+            },
             dateAcheived: {
                 type: Date,
                 default: Date.now

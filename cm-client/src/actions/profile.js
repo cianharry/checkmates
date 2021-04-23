@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { setAlert } from './alerts'
 
-import { GET_USER_PROFILE, PROFILE_ERROR } from './types'
+import { GET_USER_PROFILE, UPDATE_USER_PROFILE, PROFILE_ERROR } from './types'
 
 // action to get current user's profile
 export const getCurrentUser = () => async dispatch => {
@@ -49,6 +49,42 @@ export const createUserProfile = (formData, history, edit = false) => async disp
         // if there are errors dispatch the set alert action for each of the error message(s)
         // Req_Id:      R - Profile Validation
         // Test_Id:     T037
+        if(errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: error.response.statusText, status: error.response.status}
+        })
+    }
+}
+
+// Add Milestone to Profile
+export const addMilestone = (formData, history) => async dispatch => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        // put request to profile backend api with form data and the config headers
+        const res = await axios.put('/api/profile/milestone', formData, config)
+        // dispatching the user profile reducer action 
+        dispatch({
+            type: UPDATE_USER_PROFILE,
+            payload: res.data
+        })
+        // dispatching the setAlert action to notify the user that the milestone is added
+        // Req_Id:      R - Milestone Validation
+        // Test_Id:     T040
+        dispatch(setAlert('Milestone added to User Profile ', 'success'))
+        // redirecting when the milestone is added 
+        history.push('/dashboard')
+    } catch (error) {
+        const errors = error.response.data.errors;
+        // if there are errors dispatch the set alert action for each of the error message(s)
+        // Req_Id:      R - Milestone Validation
+        // Test_Id:     T041
         if(errors) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }

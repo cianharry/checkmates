@@ -181,12 +181,14 @@ router.put(
         // destructuring request body to access title and description
         const {
             title,
-            description
+            description,
+            privacy
         } = req.body;
         // Create new milestone from the req title & description
         const newMileS = {
             title,
-            description
+            description,
+            privacy
         }
 
         try {

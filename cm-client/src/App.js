@@ -16,6 +16,7 @@ import { userPresent } from './actions/auth';
 import setAuthToken from './helpers/setAuthToken';
 import CreateProfile from './components/profile_forms/CreateProfile';
 import EditProfile from './components/profile_forms/EditProfile';
+import AddMilestone from './components/profile_forms/AddMilestone';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
@@ -47,7 +48,7 @@ const App = () => {
                 <PrivateRoute exact path="/dashboard" component={ Dashboard } />
                 <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
                 <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
-
+                <PrivateRoute exact path="/add-milestone" component={ AddMilestone } />
               </Switch>
             </section>
             </div>
