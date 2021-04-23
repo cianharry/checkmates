@@ -23,18 +23,19 @@ a:hover {
  * Base structure
  */
 
-html,
 body {
   height: 100%;
   background-color: #33cccc;
   background-image: url('./assets/Enso.png');
-  background-repeat: no-repeat;
-}
-
-body {
   justify-content: center;
   color: #0a2929;
 }
+/*
+.table {
+  background-color: #0a2929;
+  color: #fff;
+}
+*/
 
 /*
  * Header

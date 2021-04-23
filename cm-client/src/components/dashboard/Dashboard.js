@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import { getCurrentUser } from '../../actions/profile'
 // REFERENCE https://www.educative.io/edpresso/how-to-create-a-loading-spinner-in-react
 import { Spinner } from 'react-bootstrap';
-import  Actions  from './Actions';
 import { Link } from 'react-router-dom';
+import  Actions  from './Actions';
+import Milestone from './Milestone';
 
 // destructuring props
 const Dashboard = ({getCurrentUser, auth, profile}) => {
@@ -31,7 +32,10 @@ const Dashboard = ({getCurrentUser, auth, profile}) => {
             // Test_Id: T035
             */}
             { profile.profile !== null ? (
-                <Fragment><Actions/></Fragment>
+                <Fragment>
+                    <Actions/>
+                    <Milestone milestones={profile.profile.milestones} />
+                </Fragment>
             ) : (
                 <Fragment>
                     <p>You need to add your profile information before accessing the checkmates dashboard </p>
