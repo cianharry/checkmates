@@ -35,7 +35,7 @@ const EditProfile = (props) => {
             twitter: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.twitter,
         })
         // dependant on props.loading 
-    }, [props.profile.loading])
+    }, [props.getCurrentUser])
 
     // destructuring constants from form data
     const {

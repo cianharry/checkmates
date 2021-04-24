@@ -163,7 +163,7 @@ export const deleteMilestone = id => async dispatch => {
 export const deleteUser = () => async dispatch => {
     if(window.confirm('Are you certain, this action cannot be reversed')) {
         try {
-            const res = await axios.delete('/api/profile')
+            await axios.delete('/api/profile')
             
             dispatch({ type: CLEAR_USER_PROFILE })
             dispatch({ type: DELETE_USER })

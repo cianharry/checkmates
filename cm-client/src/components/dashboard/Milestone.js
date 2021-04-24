@@ -17,7 +17,7 @@ const Milestone = props => {
             <td className='hide-sm'>
                 <Moment format="DD/MM/YY">{ms.dateAcheived}</Moment>
             </td>
-            <td>{ms.privacy = true ? 'Private' : 'Public' }</td>
+            <td>{ms.privacy ? 'Private' : 'Public' }</td>
             <td>
                 <button onClick={() => props.deleteMilestone(ms._id)} className="btn btn-danger">Remove</button>
             </td>

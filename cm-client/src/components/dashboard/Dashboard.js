@@ -15,7 +15,7 @@ const Dashboard = ({getCurrentUser, deleteUser, auth, profile}) => {
         // Req_Id: R0 
         // Test_Id: T034
         getCurrentUser();
-    }, [])
+    }, [getCurrentUser])
     return profile.loading && profile.profile === null ? (
         <Spinner 
             animation="border"

@@ -9,7 +9,7 @@ import ProfileItem from './ProfileItem'
 const Profiles = props => {
     useEffect(() => {
         props.getProfiles()
-    }, [])
+    }, [props.getProfiles])
     return (
         <Fragment>
             { props.profile.loading ? (
@@ -20,7 +20,7 @@ const Profiles = props => {
                 ) : (
                 <Fragment>
                     <h1>Checkmates Profiles</h1>
-                    <p className="lead"><i className="fas fa-hands-helping"></i> View other Checkmates and build a support network with people who understand what you are going through... </p>
+                    <p className="lead"><i className="fas fa-hands-helping"></i> Connect with other Checkmates and build a support network with people who understand what you are going through... </p>
                     <div className="">
                         {/*
                         // Req_Id:      R0 - 
