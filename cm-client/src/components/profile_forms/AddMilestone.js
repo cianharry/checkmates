@@ -77,7 +77,7 @@ const AddMilestone = props => {
                         checked={privacy}
                         name="privacy"
                         value={privacy}/>
-                        {' '}<i class="fas fa-eye-slash"></i>{' - '} Select if you want this milestone to be private and not visible on your profile
+                        {' '}<i className="fas fa-eye-slash"></i>{' - '} Select if you want this milestone to be private and not visible on your profile
                     </p>
                 </div>
 

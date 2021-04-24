@@ -16,6 +16,11 @@ const Navbar = (props) => {
         <nav className="nav nav-masthead justify-content-center">
             <Link
                 className="nav-link"
+                to='/profiles'>
+                    <i className="fas fa-hands-helping"></i> <span className='hide-sm'> Mates</span>
+            </Link>
+            <Link
+                className="nav-link"
                 to='/dashboard'>
                     <i className='far fa-user-circle'/> <span className='hide-sm'> Dashboard</span>
             </Link>
@@ -36,8 +41,9 @@ const Navbar = (props) => {
     // Req_Id:      R0 - 
     // Test_Id:     T031
     const guestLinks = (
+        
         <nav className="nav nav-masthead ">    
-            <Link className="nav-link" to='/'>Home</Link>
+            <Link className="nav-link" to='/'><i className="fas fa-home"></i> Home</Link>
             <Link className="nav-link" to='/register'>Register</Link>
             <Link className="nav-link" to='/login'>Login</Link>
         </nav>
@@ -46,8 +52,8 @@ const Navbar = (props) => {
     return (
         <header className="masthead">
             <div className="inner">
-                <img src={symbol} alt='logo'  style={{float: 'left'}}/>
-                <Link className="masthead-brand h2" to='/'>Checkmates</Link>
+                <img src={symbol} alt='logo'/>
+                <Link className="masthead-brand h2 hide-sm" to='/'>Checkmates</Link>
                 { !props.auth.loading && (<Fragment>{ props.auth.isAuthenticated ? userLinks : guestLinks }</Fragment>)}
             </div>
         </header>
