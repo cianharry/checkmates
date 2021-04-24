@@ -1,4 +1,4 @@
-import { GET_USER_PROFILE, UPDATE_USER_PROFILE, PROFILE_ERROR, CLEAR_USER_PROFILE } from '../actions/types';
+import { GET_USER_PROFILE, UPDATE_USER_PROFILE, PROFILE_ERROR, CLEAR_USER_PROFILE, GET_ALL_PROFILES } from '../actions/types';
 
 // initiliazing profile state
 const initState = {
@@ -15,6 +15,12 @@ export default function profile(state = initState, action) {
             return {
                 ...state,
                 profile: action.payload,
+                loading: false
+            }
+        case GET_ALL_PROFILES:
+            return {
+                ...state,
+                profiles: action.payload,
                 loading: false
             }
         case PROFILE_ERROR:

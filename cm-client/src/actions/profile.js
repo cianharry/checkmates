@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { setAlert } from './alerts'
 
-import { GET_USER_PROFILE, UPDATE_USER_PROFILE, CLEAR_USER_PROFILE, PROFILE_ERROR, DELETE_USER } from './types'
+import { GET_USER_PROFILE, UPDATE_USER_PROFILE, CLEAR_USER_PROFILE, GET_ALL_PROFILES, PROFILE_ERROR, DELETE_USER } from './types'
 
 // action to get current user's profile
 export const getCurrentUser = () => async dispatch => {
@@ -14,6 +14,48 @@ export const getCurrentUser = () => async dispatch => {
             payload: res.data
         })
 
+    } catch (error) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: error.response.statusText, status: error.response.status}
+        })
+    }
+}
+
+// action to get all profiles
+export const getProfiles = () => async dispatch => {
+    // clearing any existing profile from application state
+    dispatch({ type: CLEAR_USER_PROFILE })
+    try {
+        // axios request to the backend api
+        // Req_Id:      R0
+        // Test_Id:     T045
+        const res = await axios.get('/api/profile')
+        // dispatching get all profile reducer action
+        dispatch({
+            type: GET_ALL_PROFILES,
+            payload: res.data
+        })
+    } catch (error) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: error.response.statusText, status: error.response.status}
+        })
+    }
+}
+
+// action to get profile by user Id
+export const getProfileById = (userId) => async dispatch => {
+    try {
+        // axios request to the backend api
+        // Req_Id:      R0
+        // Test_Id:     T046
+        const res = await axios.get(`/api/profile/user/${userId}`)
+        // dispatching get profile by user id reducer action
+        dispatch({
+            type: GET_USER_PROFILE,
+            payload: res.data
+        })
     } catch (error) {
         dispatch({
             type: PROFILE_ERROR,
