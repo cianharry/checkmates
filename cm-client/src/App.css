@@ -263,9 +263,18 @@ input {
 
 .profile-container {
   background-color: #fff;
-  border-radius: 6px;
-  border: 2px solid #0a2929;
+  border-radius: 2px;
   margin-bottom: 1rem;
+  margin-top: 1rem;
   width: 800px;
   max-width: 100%;
+  text-align: center;
+  margin: 1rem auto;
+}
+
+.background-col {
+  background-color: #0a2929;
+  border-radius: 4px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }

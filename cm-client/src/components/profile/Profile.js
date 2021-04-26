@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Spinner } from 'react-bootstrap'
 import { getProfileById } from '../../actions/profile'
+import ProfileMain from './ProfileMain'
 
 const Profile = ({ getProfileById, profile: {profile, loading }, auth, match }) => {
     useEffect(() => {
@@ -21,8 +22,11 @@ const Profile = ({ getProfileById, profile: {profile, loading }, auth, match }) 
                         <Link className="btn btn-light my-1" to="/profiles">Go Back</Link>
                         {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id &&
                         (<Link className="btn btn-secondary ml-1 my-1" to="/edit-profile">Edit</Link>) }
+                        <div className="container">
+                            <ProfileMain profile={profile} />
+                        </div>
                     </Fragment>
-                ) }
+                )}
         </Fragment>
     )
 }

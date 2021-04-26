@@ -10,7 +10,7 @@ const ProfileItem = ({ profile: {
 }}) => {
     // creating the invidual profile component to be displayed in the profiles component
     return (
-        <div style={{opacity: 0.9}} className='profile-container p-1'>
+        <div style={{opacity: 1}} className='profile-container p-1 '>
             <div style={{opacity: 1}} className="container">
                 <img src={avatar} alt="profile pic" className="round-img"/>
                 <div>

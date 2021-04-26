@@ -21,7 +21,7 @@ const Profiles = props => {
                 <Fragment>
                     <h1>Checkmates Profiles</h1>
                     <p className="lead"><i className="fas fa-hands-helping"></i> Connect with other Checkmates and build a support network with people who understand what you are going through... </p>
-                    <div className="">
+                    <div className="background-col">
                         {/*
                         // Req_Id:      R0 - 
                         // Test_Id:     T045
