@@ -5,11 +5,13 @@ import { connect } from 'react-redux'
 import { Spinner } from 'react-bootstrap'
 import { getProfileById } from '../../actions/profile'
 import ProfileMain from './ProfileMain'
+import ProfileMilestones from './ProfileMilestones'
 
-const Profile = ({ getProfileById, profile: {profile, loading }, auth, match }) => {
+const Profile = ({ getProfileById, profile: {profile, loading, milestones }, auth, match }) => {
     useEffect(() => {
         getProfileById(match.params.id)
     }, [getProfileById])
+
     return (
         <Fragment>
             {profile === null || loading ? (
@@ -24,6 +26,19 @@ const Profile = ({ getProfileById, profile: {profile, loading }, auth, match }) 
                         (<Link className="btn btn-secondary ml-1 my-1" to="/edit-profile">Edit</Link>) }
                         <div className="container">
                             <ProfileMain profile={profile} />
+                            
+                            <h1 className='text-center'>User Milestones</h1>
+                            {profile.milestones.length > 0 ? 
+                            ( 
+                                <Fragment>
+                                    {profile.milestones.map(pms => (
+                                        <ProfileMilestones key={pms._id} milestones={pms}/>
+                                    ))
+                                    }
+                                </Fragment>
+                            ) : (
+                                <h4>No public milestones to display</h4>
+                            )}
                         </div>
                     </Fragment>
                 )}

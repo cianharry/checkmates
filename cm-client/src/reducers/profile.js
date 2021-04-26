@@ -26,7 +26,9 @@ export default function profile(state = initState, action) {
         case PROFILE_ERROR:
             return {
                 ...state,
-                error: action.payload
+                error: action.payload,
+                loading: false,
+                profile: null
             }
         case CLEAR_USER_PROFILE:
             return {

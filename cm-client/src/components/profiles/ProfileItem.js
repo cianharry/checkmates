@@ -16,9 +16,6 @@ const ProfileItem = ({ profile: {
                 <div>
                     <h2>{name}</h2>
                     <p style={{color: '#33cccc'}} className="lead">Exp: {experience}</p>
-                    <p><strong>Gender:</strong> {gender}</p>
-                    <p><strong>Personal Bio</strong></p>
-                    <p>{bio}</p>
                     <Link to={`/profile/${_id}`} className='btn btn-secondary' >
                         View Profile
                     </Link>

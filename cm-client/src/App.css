@@ -278,3 +278,7 @@ input {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+.bg-bark {
+  background-color: #0a2929;
+}
