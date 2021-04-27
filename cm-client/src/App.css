@@ -160,6 +160,10 @@ input[type='text'] {
     margin-top: 8rem;
   }
 
+  .checkin-container {
+    display: none;
+  }
+
   .symbol img {
     display: none;
   }
@@ -281,4 +285,19 @@ input {
 
 .bg-bark {
   background-color: #0a2929;
+}
+
+.primary-col {
+  color: #33cccc;
+}
+
+.round-img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.checkin-container {
+  width: 900px;
+  max-width: 100%;
 }

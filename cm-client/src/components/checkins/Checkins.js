@@ -3,20 +3,28 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCheckins } from '../../actions/checkin'
 import { Spinner } from 'react-bootstrap'
+import CheckinItem from './CheckinItem'
 
 const Checkins = ({ getCheckins, checkin: { checkins, loading } }) => {
     useEffect(() => {
         getCheckins()
     }, [getCheckins])
-    return (
-        <div>
-            Get checkins test
-            <br/>
-            <Spinner 
-                animation="border"
-                role="status">
-            </Spinner>
-        </div>
+    return loading ? 
+        <Spinner 
+            animation="border"
+            role="status">
+        </Spinner> : (
+        <Fragment>
+            <h1>Checkins</h1>
+            <p className="lead">
+                <i className="fas fa-user"></i> Welcome to the checkmates community
+            </p>
+            <div className="checkins">
+                {checkins.map(checkin => (
+                    <CheckinItem key={checkin._id} checkin={checkin}/>
+                ))}
+            </div>
+        </Fragment>
     )
 }
 
