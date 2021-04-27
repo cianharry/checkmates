@@ -66,8 +66,12 @@ export const createCheckin = (formData) => async dispatch => {
         }
     }
     try {
+        // ReqId:   
+        // TestId:  T051
         const res = await axios.post('api/checkins/', formData, config)
         // dispatching the create checkin reducer action
+        // ReqId:   
+        // TestId:  T051
         dispatch({
             type: CREATE_CHECKIN,
             payload: res.data
@@ -86,8 +90,10 @@ export const createCheckin = (formData) => async dispatch => {
 export const getCheckin = (checkinId) => async dispatch => {
     try {
         // getting the individual checkin from backend api
-        const res = await axios.get(`/api/checkins${checkinId}`)
+        const res = await axios.get(`/api/checkins/${checkinId}`)
         // dispatching the checkin reducer action
+        // ReqId:   
+        // TestId:  T052
         dispatch({
             type: GET_CHECKIN,
             payload: res.data

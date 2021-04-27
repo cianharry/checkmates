@@ -8,7 +8,7 @@ import { addReaction, deleteCheckin } from '../../actions/checkin'
 
 
 
-const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, emotion, intensity, maintext, privacy, name, user, avatar, reactions, comments, date } }) => {
+const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: { _id, title, emotion, intensity, maintext, privacy, name, user, avatar, reactions, comments, date } }) => {
     return (
         <Fragment>
             <div className="container checkin-container bg-bark d-flex">
@@ -19,7 +19,7 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, 
                     </Link>
                 </div>
                 <div className="checkin-body p-2 float-right bg-light ">
-                    <h3>{title}</h3>
+                    <h3 className='primary-col'>{title}</h3>
                     <h4><strong>Emotion: </strong>{emotion}</h4>
                     <h4><strong>Intensity: </strong>{intensity}</h4>
                     <h4><strong>Privacy: </strong>{privacy ? 'Private' : 'Public'}</h4>
@@ -29,18 +29,22 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, 
                     TestId: T048    
                     Adding support reaction to freinds checkin
                     */}
-                    <button onClick={e => addReaction(_id)} className="btn btn-secondary">
+                    {showButtons ? 
+                    <Fragment>
+                        <button onClick={e => addReaction(_id)} className="btn btn-secondary">
                         <i class="fas fa-heart"></i>
                         {reactions.length > 0 && (
                             <span className='primary-col'>{' '}{reactions.length}</span>
                         )}
                     </button>
                     <Link to={`/checkin/${_id}`} className="btn btn-secondary">
-                        <i class="far fa-comment-dots"></i> Discussion
+                        <i className="far fa-comment-dots"></i> Discussion
                         {comments.length > 0 && (
                             <span className='primary-col'>{' '}{comments.length}</span>
                         )}
                     </Link>
+                    </Fragment> : ''}
+                    
                     <button className="btn btn-secondary">
                         <i class="fas fa-link"></i>{' '}
                         Private Chat
@@ -61,6 +65,10 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, 
             
         </Fragment>
     )
+}
+
+CheckinItem.defaultProps = {
+    showButtons: true
 }
 
 CheckinItem.propTypes = {
