@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { setAlert } from './alerts'
-import { GET_CHECKINS, ADD_REACTION, GET_CHECKIN, CHECKIN_ERROR, CREATE_CHECKIN, DELETE_CHECKIN } from './types'
+import { GET_CHECKINS, ADD_REACTION, GET_CHECKIN, CHECKIN_ERROR, CREATE_CHECKIN, DELETE_CHECKIN, ADD_COMMENT, DELETE_COMMENT } from './types'
 
 // action to get checkins
 export const getCheckins = () => async dispatch => {
@@ -98,6 +98,56 @@ export const getCheckin = (checkinId) => async dispatch => {
             type: GET_CHECKIN,
             payload: res.data
         })
+    } catch (error) {
+        dispatch({
+            type: CHECKIN_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}
+
+// action to add advice comment to user checkin
+export const addComment = (checkinId, formData) => async dispatch => {
+    // config of headers
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+        // post request to the backend api
+        const res = await axios.post(`/api/checkins/comment/${checkinId}`, formData, config)
+        // dispatching the checkin comment reducer action
+        // ReqId:   
+        // TestId:  T053
+        dispatch({
+            type: ADD_COMMENT,
+            payload: res.data
+        })
+        // notifying the user through the set alert action
+        dispatch(setAlert('Comment added', 'success'))
+    } catch (error) {
+        dispatch({
+            type: CHECKIN_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}
+
+// action to delete advice comment from user checkin
+export const deleteComment = (checkinId, commentId) => async dispatch => {
+    try {
+        // delete request to the backend api
+        await axios.delete(`/api/checkins/comment/${checkinId}/${commentId}`)
+        // dispatching the delete comment reducer action
+        // ReqId:   
+        // TestId:  T054
+        dispatch({
+            type: DELETE_COMMENT,
+            payload: commentId
+        })
+        // notifying the user through the set alert action
+        dispatch(setAlert('Comment deleted successfully', 'success'))
     } catch (error) {
         dispatch({
             type: CHECKIN_ERROR,

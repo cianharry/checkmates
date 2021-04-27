@@ -1,4 +1,4 @@
-import { GET_CHECKINS, ADD_REACTION, GET_CHECKIN, CHECKIN_ERROR, CREATE_CHECKIN, DELETE_CHECKIN } from '../actions/types'
+import { GET_CHECKINS, ADD_REACTION, GET_CHECKIN, CHECKIN_ERROR, CREATE_CHECKIN, DELETE_CHECKIN, ADD_COMMENT, DELETE_COMMENT } from '../actions/types'
 // initiliazing checkin state
 const initState = {
     checkins: [],
@@ -41,6 +41,19 @@ export default function checkin(state = initState, action) {
                 error: action.payload,
                 loading: false,
                 checkin: null
+            }
+        case ADD_COMMENT:
+            return {
+                ...state,
+                checkin: { ...state.checkin, comments: action.payload },
+                loading: false
+            }
+        case DELETE_COMMENT:
+            return {
+                ...state,
+                // filtering out the comment that matches the id
+                checkin: { ...state.checkin, comments: state.checkin.comments.filter(comment => comment._id !== action.payload) },
+                loading: false
             }
         case ADD_REACTION:
             return {
