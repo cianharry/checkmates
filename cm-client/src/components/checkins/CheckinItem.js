@@ -4,22 +4,28 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Moment from 'react-moment'
 import ProfileIMG from '../../assets/Profile.png'
+import { addReaction } from '../../actions/checkin'
 
 
-const CheckinItem = ({ auth, checkin: { _id, title, emotion, intensity, maintext, name, user, avatar, reactions, comments, date } }) => {
+const CheckinItem = ({ addReaction, auth, checkin: { _id, title, emotion, intensity, maintext, name, user, avatar, reactions, comments, date } }) => {
     return (
         <Fragment>
             <div className="container checkin-container bg-bark d-flex">
                 <div className='pt-4 pr-4'>
                     <img src={ProfileIMG} alt="" className="round-img"/>
-                    <h4>{name}</h4>
+                    <h4 className='primary-col text-center p-2'>{name}</h4>
                 </div>
-                <div className="checkin-body p-2 shadow float-right bg-light ">
+                <div className="checkin-body p-2 float-right bg-light ">
                     <h3>{title}</h3>
                     <h4><strong>Emotion: </strong>{emotion}</h4>
                     <h4><strong>Intensity: </strong>{intensity}</h4>
                     <p>{maintext}</p>
-                    <button className="btn btn-secondary">
+                    {/*
+                    ReqId:  R0
+                    TestId: T048    
+                    Adding support reaction to freinds checkin
+                    */}
+                    <button onClick={e => addReaction(_id)} className="btn btn-secondary">
                         <i class="fas fa-heart"></i>
                         {reactions.length > 0 && (
                             <span className='primary-col'>{' '}{reactions.length}</span>
@@ -53,10 +59,11 @@ const CheckinItem = ({ auth, checkin: { _id, title, emotion, intensity, maintext
 CheckinItem.propTypes = {
     checkin: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
+    addReaction: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, {  })(CheckinItem)
+export default connect(mapStateToProps, { addReaction })(CheckinItem)

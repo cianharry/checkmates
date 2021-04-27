@@ -1,4 +1,4 @@
-import { GET_CHECKINS, CHECKIN_ERROR } from '../actions/types'
+import { GET_CHECKINS, ADD_REACTION, CHECKIN_ERROR } from '../actions/types'
 // initiliazing checkin state
 const initState = {
     checkins: [],
@@ -21,6 +21,15 @@ export default function checkin(state = initState, action) {
                 error: action.payload,
                 loading: false,
                 checkin: null
+            }
+        case ADD_REACTION:
+            return {
+                ...state,
+                // mapping through the checkins to see if it matches the payload id, return the state with reactions
+                checkins: state.checkins.map(checkin => checkin._id === action.payload.checkinId ? {
+                    ...checkin, reactions: action.payload.reactions
+                } : checkin),
+                loading: false
             }
         default:
             return state
