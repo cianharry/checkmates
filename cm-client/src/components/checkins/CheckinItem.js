@@ -8,7 +8,7 @@ import { addReaction, deleteCheckin } from '../../actions/checkin'
 
 
 
-const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, emotion, intensity, maintext, name, user, avatar, reactions, comments, date } }) => {
+const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, emotion, intensity, maintext, privacy, name, user, avatar, reactions, comments, date } }) => {
     return (
         <Fragment>
             <div className="container checkin-container bg-bark d-flex">
@@ -22,6 +22,7 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, 
                     <h3>{title}</h3>
                     <h4><strong>Emotion: </strong>{emotion}</h4>
                     <h4><strong>Intensity: </strong>{intensity}</h4>
+                    <h4><strong>Privacy: </strong>{privacy ? 'Private' : 'Public'}</h4>
                     <p>{maintext}</p>
                     {/*
                     ReqId:  R0
