@@ -47,6 +47,7 @@ router.post('/',
                 emotion: req.body.emotion,
                 intensity: req.body.intensity,
                 maintext: req.body.maintext,
+                privacy: req.body.privacy,
                 name: user.name,
                 avatar: user.avatar
             });

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { setAlert } from './alerts'
-import { GET_CHECKINS, ADD_REACTION, CHECKIN_ERROR, DELETE_CHECKIN } from './types'
+import { GET_CHECKINS, ADD_REACTION, CHECKIN_ERROR, CREATE_CHECKIN, DELETE_CHECKIN } from './types'
 
 // action to get checkins
 export const getCheckins = () => async dispatch => {
@@ -49,6 +49,31 @@ export const deleteCheckin = checkinId => async dispatch => {
         })
         // notifying the user through the set alert action
         dispatch(setAlert('Checkin has been successfully deleted', 'success'))
+    } catch (error) {
+        dispatch({
+            type: CHECKIN_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}
+
+// action to create a user checkin
+export const createCheckin = (formData) => async dispatch => {
+    // config of headers
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post('api/checkins/', formData, config)
+        // dispatching the create checkin reducer action
+        dispatch({
+            type: CREATE_CHECKIN,
+            payload: res.data
+        })
+        // notifying the user through the set alert action
+        dispatch(setAlert('Checkin has been created, keep it up!', 'success'))
     } catch (error) {
         dispatch({
             type: CHECKIN_ERROR,

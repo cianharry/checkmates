@@ -301,3 +301,7 @@ input {
   width: 900px;
   max-width: 100%;
 }
+
+.checkin-body {
+  width: 100%;
+}

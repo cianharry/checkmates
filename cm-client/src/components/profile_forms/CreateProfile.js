@@ -31,7 +31,7 @@ const CreateProfile = (props) => {
         twitter
     } = formData
     // using a spread operator to copy the form data
-    // using the onChange target to define what formData input feildd should be updated
+    // using the onChange target to define what formData input feild should be updated
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     // calling the create profile action on form submission
     const onSubmit = async e => {

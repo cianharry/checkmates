@@ -1,4 +1,4 @@
-import { GET_CHECKINS, ADD_REACTION, CHECKIN_ERROR, DELETE_CHECKIN } from '../actions/types'
+import { GET_CHECKINS, ADD_REACTION, CHECKIN_ERROR, CREATE_CHECKIN, DELETE_CHECKIN } from '../actions/types'
 // initiliazing checkin state
 const initState = {
     checkins: [],
@@ -13,6 +13,13 @@ export default function checkin(state = initState, action) {
             return {
                 ...state,
                 checkins: action.payload,
+                loading: false
+            }
+        case CREATE_CHECKIN:
+            // adding the newly created checkin to the existing checkins array
+            return {
+                ...state,
+                checkins: [action.payload, ...state.checkins],
                 loading: false
             }
         case DELETE_CHECKIN:

@@ -23,6 +23,10 @@ const CheckinSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    privacy: {
+        type: Boolean,
+        default: true
+    },
     name: {
         type: String
     },

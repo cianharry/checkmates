@@ -13,8 +13,10 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, 
         <Fragment>
             <div className="container checkin-container bg-bark d-flex">
                 <div className='pt-4 pr-4'>
-                    <img src={ProfileIMG} alt="" className="round-img"/>
-                    <h4 className='primary-col text-center p-2'>{name}</h4>
+                    <Link to={`profile/${user}`}>
+                        <img src={ProfileIMG} alt="" className="round-img"/>
+                        <h4 className='primary-col text-center p-2'>{name}</h4>
+                    </Link>
                 </div>
                 <div className="checkin-body p-2 float-right bg-light ">
                     <h3>{title}</h3>
