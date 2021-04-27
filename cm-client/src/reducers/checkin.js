@@ -1,4 +1,4 @@
-import { GET_CHECKINS, ADD_REACTION, CHECKIN_ERROR } from '../actions/types'
+import { GET_CHECKINS, ADD_REACTION, CHECKIN_ERROR, DELETE_CHECKIN } from '../actions/types'
 // initiliazing checkin state
 const initState = {
     checkins: [],
@@ -13,6 +13,13 @@ export default function checkin(state = initState, action) {
             return {
                 ...state,
                 checkins: action.payload,
+                loading: false
+            }
+        case DELETE_CHECKIN:
+            return {
+                ...state,
+                // returning all the checkin except for the one that has been deleted
+                checkins: state.checkins.filter(checkin => checkin._id !== action.payload),
                 loading: false
             }
         case CHECKIN_ERROR:

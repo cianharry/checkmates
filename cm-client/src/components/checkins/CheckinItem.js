@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Moment from 'react-moment'
 import ProfileIMG from '../../assets/Profile.png'
-import { addReaction } from '../../actions/checkin'
+import { addReaction, deleteCheckin } from '../../actions/checkin'
 
 
-const CheckinItem = ({ addReaction, auth, checkin: { _id, title, emotion, intensity, maintext, name, user, avatar, reactions, comments, date } }) => {
+
+const CheckinItem = ({ addReaction, deleteCheckin, auth, checkin: { _id, title, emotion, intensity, maintext, name, user, avatar, reactions, comments, date } }) => {
     return (
         <Fragment>
             <div className="container checkin-container bg-bark d-flex">
@@ -41,9 +42,12 @@ const CheckinItem = ({ addReaction, auth, checkin: { _id, title, emotion, intens
                         <i class="fas fa-link"></i>{' '}
                         Private Chat
                     </button>
-                    {/* Checking that the checkin user is the current user */}
+                    {/* Checking that the checkin user is the current user
+                        ReqId:  R0 
+                        TestId: T050
+                     */}
                     {!auth.loading && user === auth.user._id && (
-                        <button className="btn btn-danger float-right">
+                        <button onClick={e => deleteCheckin(_id)} className="btn btn-danger float-right">
                             <i className="fas fa-times"></i>
                         </button>
                     )}
@@ -60,10 +64,11 @@ CheckinItem.propTypes = {
     checkin: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     addReaction: PropTypes.func.isRequired,
+    deleteCheckin: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { addReaction })(CheckinItem)
+export default connect(mapStateToProps, { addReaction, deleteCheckin })(CheckinItem)

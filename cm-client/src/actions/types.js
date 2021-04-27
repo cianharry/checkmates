@@ -18,3 +18,4 @@ export const DELETE_USER = 'DELETE_USER';
 export const GET_CHECKINS = 'GET_CHECKINS';
 export const CHECKIN_ERROR = 'CHECKIN_ERROR';
 export const ADD_REACTION = 'ADD_REACTION'
+export const DELETE_CHECKIN = 'DELETE_CHECKIN'
