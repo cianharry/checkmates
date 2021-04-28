@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createUserProfile, getCurrentUser } from '../../actions/profile'
 
-const EditProfile = (props) => {
+const EditProfile = ({ createUserProfile, getCurrentUser, history, profile: { profile, loading }}) => {
     // initializing from data 
     const [formData, setFormData] = useState({
         experience: '',
@@ -21,21 +21,21 @@ const EditProfile = (props) => {
     //
     useEffect(() => {
         // get the current user profile using the profile action
-        props.getCurrentUser()
+        getCurrentUser()
         // if the component is loading or any of the fields arent present in the state then show blank
         // otherwise show the existing state profile feilds 
         setFormData({
-            experience: props.profile.loading || !props.profile.profile.experience ? '' : props.profile.profile.experience,
-            age: props.profile.loading || !props.profile.profile.age ? 0 : props.profile.profile.age,
-            gender: props.profile.loading || !props.profile.profile.gender ? '' : props.profile.profile.gender,
-            bio: props.profile.loading || !props.profile.profile.bio ? '' : props.profile.profile.bio,
-            youtube: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.youtube,
-            instagram: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.instagram,
-            facebook: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.facebook,
-            twitter: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.twitter,
+            experience: loading || !profile.experience ? '' : profile.experience,
+            age: loading || !profile.age ? 0 : profile.age,
+            gender: loading || !profile.gender ? '' : profile.gender,
+            bio: loading || !profile.bio ? '' : profile.bio,
+            youtube: loading || !profile.social ? '' : profile.social.youtube,
+            instagram: loading || !profile.social ? '' : profile.social.instagram,
+            facebook: loading || !profile.social ? '' : profile.social.facebook,
+            twitter: loading || !profile.social ? '' : profile.social.twitter,
         })
         // dependant on props.loading 
-    }, [props.getCurrentUser])
+    }, [getCurrentUser])
 
     // destructuring constants from form data
     const {
@@ -57,7 +57,7 @@ const EditProfile = (props) => {
         // setting edit to true to signify its an edit action
         // Req_Id: R0 
         // Test_Id: T039
-        props.createUserProfile(formData, props.history, true)
+        createUserProfile(formData, history, true)
     }
 
     return (

@@ -47,7 +47,7 @@ const CommentItem = ({ auth, deleteComment, checkinId, comment: { _id, text, nam
 }
 
 CommentItem.propTypes = {
-    checkinId: PropTypes.number.isRequired,
+    checkinId: PropTypes.string.isRequired,
     comment: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     deleteComment: PropTypes.func.isRequired

@@ -6,13 +6,13 @@ import { getProfiles } from '../../actions/profile'
 import ProfileItem from './ProfileItem'
 
 
-const Profiles = props => {
+const Profiles = ({ getProfiles, profile: { profiles, loading }}) => {
     useEffect(() => {
-        props.getProfiles()
-    }, [props.getProfiles])
+        getProfiles()
+    }, [getProfiles])
     return (
         <Fragment>
-            { props.profile.loading ? (
+            { loading ? (
                 <Spinner 
                     animation="border"
                     role="status">
@@ -26,8 +26,8 @@ const Profiles = props => {
                         // Req_Id:      R0 - 
                         // Test_Id:     T045
                         */}
-                        {props.profile.profiles.length > 0 ? (
-                            props.profile.profiles.map(p => (
+                        {profiles.length > 0 ? (
+                            profiles.map(p => (
                                 <ProfileItem key={p._id} profile={p}></ProfileItem>
                             ))
                         ) : 'No profiles exist' }

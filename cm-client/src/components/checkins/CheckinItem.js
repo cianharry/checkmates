@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Moment from 'react-moment'
-import ProfileIMG from '../../assets/Profile.png'
 import { addReaction, deleteCheckin } from '../../actions/checkin'
 
 
