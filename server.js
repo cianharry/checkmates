@@ -9,8 +9,6 @@ connectDB();
 // Middleware for body parser
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => res.send('API test running'));
-
 // Define Routes to be used
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));

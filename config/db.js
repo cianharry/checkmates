@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+const keys = require('./keys');
+//const db = config.get('mongoURI');
 
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(db, {
+        await mongoose.connect(keys.mongoURI, {
             // mongoose deprecation warning handlers
             // REFERENCE https://mongoosejs.com/docs/deprecations.html 
             useNewUrlParser: true,
