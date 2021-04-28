@@ -6,6 +6,7 @@ import { Spinner } from 'react-bootstrap'
 import { getCheckin } from '../../actions/checkin'
 import CheckinItem from '../checkins/CheckinItem'
 import CheckinComment from './CheckinComment'
+import CommentItem from './CommentItem'
 
 
 
@@ -26,6 +27,11 @@ const Checkin = ({ getCheckin, checkin: { checkin, loading }, match }) => {
             <Link to={'/checkins'} className='btn btn-light mb-2'>Go Back</Link>
             <CheckinItem checkin={checkin} showButtons={false}/>
             <CheckinComment checkinId={checkin._id} />
+            <div className="checkin-comments container">
+                {checkin.comments.map(comment => (
+                    <CommentItem key={comment._id} comment={comment} checkinId={checkin._id}/>
+                ))}
+            </div>
         </Fragment>
         
     )

@@ -17,7 +17,7 @@ const Navbar = (props) => {
             <Link
                 className="nav-link"
                 to='/profiles'>
-                    <i className="fas fa-hands-helping"></i> <span className='hide-sm'> Mates</span>
+                    <i className="fas fa-hands-helping"></i> <span className='hide-sm'>  Circle</span>
             </Link>
             <Link
                 className="nav-link"

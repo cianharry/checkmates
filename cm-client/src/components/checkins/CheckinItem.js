@@ -14,7 +14,7 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
             <div className="container checkin-container bg-bark d-flex">
                 <div className='pt-4 pr-4'>
                     <Link to={`profile/${user}`}>
-                        <img src={ProfileIMG} alt="" className="round-img"/>
+                        <img src={avatar} alt="" className="round-img"/>
                         <h4 className='primary-col text-center p-2'>{name}</h4>
                     </Link>
                 </div>
@@ -32,7 +32,7 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
                     {showButtons ? 
                     <Fragment>
                         <button onClick={e => addReaction(_id)} className="btn btn-secondary">
-                        <i class="fas fa-heart"></i>
+                        <i className="fas fa-heart"></i>
                         {reactions.length > 0 && (
                             <span className='primary-col'>{' '}{reactions.length}</span>
                         )}
@@ -46,7 +46,7 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
                     </Fragment> : ''}
                     
                     <button className="btn btn-secondary">
-                        <i class="fas fa-link"></i>{' '}
+                        <i className="fas fa-link"></i>{' '}
                         Private Chat
                     </button>
                     {/* Checking that the checkin user is the current user

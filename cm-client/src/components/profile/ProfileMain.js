@@ -12,7 +12,11 @@ const ProfileMain = ({ profile: { experience, age, gender, bio, social, user: { 
                     <p className="fs-4"></p>
                     <p className="fs-4"><strong>Journaling Knowledge: </strong>  {experience}</p>
                     {bio && (
-                        <p className="fs-4"><h5>About {name}:</h5> {bio}</p>
+                        <div>
+                            <h5>About {name}:</h5>
+                            <p className="fs-4"> {bio}</p>
+                        </div>
+                        
                     )}
                     <button className="mt-4 btn btn-secondary btn-lg" type="button">Connect</button>
                 </div>

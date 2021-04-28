@@ -8,7 +8,6 @@ const CheckinComment = ({ checkinId, addComment }) => {
     return (
         <Fragment>
             <div className="container">
-                <p className='lead bg-light'>Share some advice or show your support</p>
                 <form onSubmit={e => {
                     e.preventDefault()
                     {/*
