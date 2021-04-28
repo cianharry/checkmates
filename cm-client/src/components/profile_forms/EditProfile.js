@@ -32,9 +32,9 @@ const EditProfile = ({ createUserProfile, getCurrentUser, history, profile: { pr
             youtube: loading || !profile.social ? '' : profile.social.youtube,
             instagram: loading || !profile.social ? '' : profile.social.instagram,
             facebook: loading || !profile.social ? '' : profile.social.facebook,
-            twitter: loading || !profile.social ? '' : profile.social.twitter,
+            twitter: loading || !profile.social ? '' : profile.social.twitter
         })
-        // dependant on props.loading 
+        // 
     }, [getCurrentUser])
 
     // destructuring constants from form data
