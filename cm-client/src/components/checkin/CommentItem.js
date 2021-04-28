@@ -8,7 +8,7 @@ import { deleteComment } from '../../actions/checkin'
 const CommentItem = ({ auth, deleteComment, checkinId, comment: { _id, text, name, avatar, user, date } }) => {
     return (
         <Fragment>
-            <div className='container'>
+            <div className=''>
                 <div className="comment-container d-flex bg-white p-1 my-1">
                     <div>
                         <Link to={`/profile/${user}`}>

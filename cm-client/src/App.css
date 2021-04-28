@@ -270,7 +270,7 @@ input {
   border-radius: 2px;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  width: 800px;
+  width: 500px;
   max-width: 100%;
   text-align: center;
   margin: 1rem auto;
@@ -300,6 +300,7 @@ input {
 .checkin-container {
   width: 900px;
   max-width: 100%;
+  border-radius: 6px;
 }
 
 .checkin-body {
@@ -308,4 +309,11 @@ input {
 
 .comment-container {
   width: 100%;
+  border: 2px solid #0a2929;
+  border-radius: 6px;
+}
+
+.profile-item-container {
+  width: 300px;
+  margin: auto;
 }
