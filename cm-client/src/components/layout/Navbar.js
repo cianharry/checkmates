@@ -32,7 +32,7 @@ const Navbar = (props) => {
             <Link
                 className="nav-link"
                 onClick={props.logout}
-                to='/logout'>
+                to='/'>
                     <i className='fas fa-power-off'/><span className='hide-sm'> Logout</span> 
             </Link>
         </nav>

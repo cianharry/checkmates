@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middle/auth');
 const { check, validationResult } = require('express-validator');
+// Google Natural Language API client library
+const language = require('@google-cloud/language');
+const client = new language.LanguageServiceClient();
 
 const Checkin = require('../../models/Checkin');
 const Profile = require('../../models/Profile');
@@ -41,6 +44,21 @@ router.post('/',
             // get the user account by id
             const user = await User.findById(req.user.id).select('-password');
             // create the checkin from the user model and the request body
+            const document = {
+                content: req.body.maintext,
+                type: 'PLAIN_TEXT'
+            }
+            /*
+            // Google Natural Language API call
+            const [result] = await client.analyzeSentiment({ document: document });
+            const sentiment = result.documentSentiment;
+            // ReqId:   R0
+            // TestId:  T055
+            console.log(`Text: ${req.body.maintext}`);
+            console.log(`Sentiment score: ${sentiment.score}`);
+            console.log(`Sentiment magnitude: ${sentiment.magnitude}`);
+            */
+
             const newCheckin = new Checkin({
                 user: req.user.id,
                 title: req.body.title,
@@ -71,6 +89,7 @@ router.get('/', auth, async (req, res) => {
     try {
         // getting all checkins and sorting them by most recent date
         const checkins = await Checkin.find().sort({ date: -1 });
+        //const checkins = await Checkin.find({ 'privacy': false }).sort({ date: -1 });
         res.json(checkins);
     } catch (error) {
         console.error(error.message);
