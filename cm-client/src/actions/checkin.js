@@ -5,8 +5,26 @@ import { GET_CHECKINS, ADD_REACTION, GET_CHECKIN, CHECKIN_ERROR, CREATE_CHECKIN,
 // action to get checkins
 export const getCheckins = () => async dispatch => {
     try {
-        // getting all checking from backend api
+        // getting all checkins from backend api
         const res = await axios.get('/api/checkins')
+        // dispatching the checkins reducer action
+        dispatch({
+            type: GET_CHECKINS,
+            payload: res.data
+        })
+    } catch (error) {
+        dispatch({
+            type: CHECKIN_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status }
+        })
+    }
+}
+
+// action to get all personal checkins
+export const getPersonalCheckins = (userId) => async dispatch => {
+    try {
+        // getting all user's checkins from backend api
+        const res = await axios.get(`/api/checkins/user/${userId}`)
         // dispatching the checkins reducer action
         dispatch({
             type: GET_CHECKINS,

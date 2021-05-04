@@ -16,8 +16,13 @@ const Navbar = (props) => {
         <nav className="nav nav-masthead justify-content-center">
             <Link
                 className="nav-link"
+                to='/checkins/all'>
+                    <i className="fas fa-hands-helping"></i> <span className='hide-sm'>  Check Mates</span>
+            </Link>
+            <Link
+                className="nav-link"
                 to='/profiles'>
-                    <i className="fas fa-hands-helping"></i> <span className='hide-sm'>  Circle</span>
+                    <i className="fas fa-users"></i> <span className='hide-sm'>  Circle</span>
             </Link>
             <Link
                 className="nav-link"

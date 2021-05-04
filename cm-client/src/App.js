@@ -22,6 +22,7 @@ import Profile from './components/profile/Profile';
 import Checkins from './components/checkins/Checkins';
 import Checkin from './components/checkin/Checkin';
 import Chats from './components/chats/Chats';
+import CheckinsAll from './components/checkins/CheckinsAll';
 // REFERENCE 
 // https://www.npmjs.com/package/socket.io 
 // https://socket.io/docs/v3/client-initialization/
@@ -52,6 +53,7 @@ const App = () => {
                 <PrivateRoute exact path="/chats" component={ Chats } />
                 <PrivateRoute exact path="/checkin/:id" component={ Checkin } />
                 <PrivateRoute exact path="/checkins" component={ Checkins } />
+                <PrivateRoute exact path="/checkins/all" component={ CheckinsAll } />
                 <PrivateRoute exact path="/profile/:id" component={ Profile } />
                 <PrivateRoute exact path="/dashboard" component={ Dashboard } />
                 <PrivateRoute exact path="/create-profile" component={ CreateProfile } />

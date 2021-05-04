@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 const ProfileMain = ({ profile: { experience, age, gender, bio, social, user: { name, avatar } }}) => {
     return (
-        <div className="container col-md-6 py-4">
-            <div className="p-3 col-md-6 m-auto mb-4 bg-light text-center rounded-3">
+        <div className="container py-4">
+            <div className="p-3 m-auto mb-4 bg-light text-center rounded-3">
                 <img className='round-img' src={avatar} alt='profile pic'/>
                 <div className="container-fluid py-5">
                     <h1 className="display-5 fw-bold">{name}</h1>
@@ -23,7 +23,7 @@ const ProfileMain = ({ profile: { experience, age, gender, bio, social, user: { 
             </div>
 
             <div className="row align-items-md-stretch ">
-                <div className="col-md-6 d-inline bg-bark text-center m-auto">
+                <div className=" d-inline bg-bark text-center m-auto">
                     <div className=" p-5 text-white  rounded-3 ">
                     <h2>Social</h2>
                     {social && social.facebook && (

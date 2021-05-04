@@ -98,6 +98,18 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
+router.get('/user/:id', auth, async (req, res) => {
+    try {
+        // getting all user checkins and sorting them by most recent date
+        const checkins = await Checkin.find({ user: req.params.id }).sort({ date: -1 });
+        res.json(checkins);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Internal Server Error');
+    }
+})
+
+
 // ROUTE        GET api/checkins/:id
 // DESC         Route to get user checkin by id
 // PERMISSION   Private
