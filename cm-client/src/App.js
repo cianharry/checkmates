@@ -34,7 +34,6 @@ const App = () => {
   useEffect(() => {
     // accessing the redux store to call the dispatch user present action (runs once)
     store.dispatch(userPresent());
-   
   }, []);
 
   return (

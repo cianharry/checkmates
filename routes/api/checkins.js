@@ -48,7 +48,7 @@ router.post('/',
                 content: req.body.maintext,
                 type: 'PLAIN_TEXT'
             }
-            /*
+            
             // REFERENCE: https://googleapis.dev/nodejs/language/latest/
             // Google Natural Language API call
             const [result] = await client.analyzeSentiment({ document: document });
@@ -58,7 +58,7 @@ router.post('/',
             console.log(`Text: ${req.body.maintext}`);
             console.log(`Sentiment score: ${sentiment.score}`);
             console.log(`Sentiment magnitude: ${sentiment.magnitude}`);
-            */
+            
 
             const newCheckin = new Checkin({
                 user: req.user.id,
