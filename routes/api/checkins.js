@@ -4,10 +4,10 @@ const auth = require('../../middle/auth');
 const { check, validationResult } = require('express-validator');
 // Google Natural Language API client library
 const language = require('@google-cloud/language');
+// Instantiating the language API client
 const client = new language.LanguageServiceClient();
-
+// Importing mongoose model
 const Checkin = require('../../models/Checkin');
-const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 // ROUTE        POST api/checkins
@@ -49,6 +49,7 @@ router.post('/',
                 type: 'PLAIN_TEXT'
             }
             /*
+            // REFERENCE: https://googleapis.dev/nodejs/language/latest/
             // Google Natural Language API call
             const [result] = await client.analyzeSentiment({ document: document });
             const sentiment = result.documentSentiment;

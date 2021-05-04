@@ -21,17 +21,20 @@ import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Checkins from './components/checkins/Checkins';
 import Checkin from './components/checkin/Checkin';
+import Chats from './components/chats/Chats';
+// REFERENCE 
+// https://www.npmjs.com/package/socket.io 
+// https://socket.io/docs/v3/client-initialization/
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
 }
-
-
 const App = () => {
   // useEffect hook
   useEffect(() => {
     // accessing the redux store to call the dispatch user present action (runs once)
     store.dispatch(userPresent());
+   
   }, []);
 
   return (
@@ -47,6 +50,7 @@ const App = () => {
                 <Route exact path="/login" component={ Login } />
                 <Route exact path="/register" component={ Register } />
                 <Route exact path="/profiles" component={ Profiles } />
+                <PrivateRoute exact path="/chats" component={ Chats } />
                 <PrivateRoute exact path="/checkin/:id" component={ Checkin } />
                 <PrivateRoute exact path="/checkins" component={ Checkins } />
                 <PrivateRoute exact path="/profile/:id" component={ Profile } />

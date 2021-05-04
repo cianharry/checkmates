@@ -1,20 +1,34 @@
 const express = require('express');
 const connectDB = require('./config/db')
 const path = require('path')
+const auth = require('./middle/auth');
+var cors = require('cors');
+const jwt = require('jsonwebtoken')
+const config = require('config');
 
 const app = express();
+
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
+    cors: {
+      origin: '*',
+    }
+  });
 
 // Connection to mongoDB
 connectDB();
 
 // Middleware for body parser
 app.use(express.json({ extended: false }));
+app.use(cors())
 
 // Define Routes to be used
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/checkins', require('./routes/api/checkins'));
+app.use('/api/chats', require('./routes/api/chats'));
+//app.use('/api/message', require('./routes/api/message'));
 
 // serve static assets in production
 if(process.env.NODE_ENV === 'production') {
@@ -28,4 +42,44 @@ if(process.env.NODE_ENV === 'production') {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`[SERVER] Server started on port: ${PORT}`));
+server.listen(PORT, () => console.log(`[SERVER] Server started on port: ${PORT}`));
+
+io.use( async (socket, next) => {
+    try {
+        const token = socket.handshake.query.token
+        next()
+    } catch (error) {
+        console.log('socket error')
+    }
+})
+// socket io connection
+// ReqId:   R0 
+// TestId:  T058
+io.on('connection', (socket) => {
+    console.log('Connected: ')
+    socket.emit('message', 'Welcome to Checkmates Chat')
+    // broadcast when a user joins
+    socket.broadcast.emit('message', 'A user has joined the chat')
+
+    socket.on('disconnect', () => {
+        console.log('Disconnected: ')
+        io.emit('message', 'A user has left the chat')
+    })
+
+    socket.on('joinChat', ({chatId}) => {
+        socket.join(chatId)
+        console.log('User joined chat'+chatId)
+    })
+
+    socket.on('leaveChat', ({chatId}) => {
+        socket.leave(chatId)
+        console.log('User left chat'+chatId)
+    })
+
+    socket.on('chatMessage', ({chatId, message}) => {
+        io.to(chatId).emit('newMessage', {
+            message
+        })
+        console.log('User joined chat'+chatId)
+    })
+})

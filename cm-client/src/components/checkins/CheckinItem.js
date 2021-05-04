@@ -44,10 +44,12 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
                     </Link>
                     </Fragment> : ''}
                     
-                    <button className="btn btn-secondary">
-                        <i className="fas fa-link"></i>{' '}
-                        Private Chat
-                    </button>
+                    <Link
+                        to={'/chats'}
+                        className="btn btn-secondary">
+                            <i className="fas fa-link"></i>{' '}
+                            Private Chat
+                    </Link>
                     {/* Checking that the checkin user is the current user
                         ReqId:  R0 
                         TestId: T050
