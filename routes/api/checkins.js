@@ -98,10 +98,10 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-router.get('/user/:id', auth, async (req, res) => {
+router.get('/user', auth, async (req, res) => {
     try {
         // getting all user checkins and sorting them by most recent date
-        const checkins = await Checkin.find({ user: req.params.id }).sort({ date: -1 });
+        const checkins = await Checkin.find({ user: req.user.id }).sort({ date: -1 });
         res.json(checkins);
     } catch (error) {
         console.error(error.message);

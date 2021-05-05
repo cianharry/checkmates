@@ -12,7 +12,7 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
         <Fragment>
             <div className="container checkin-container bg-bark d-flex">
                 <div className='pt-4 pr-4'>
-                    <Link to={`profile/${user}`}>
+                    <Link to={`/profile/${user}`}>
                         <img src={avatar} alt="" className="round-img"/>
                         <h4 className='primary-col text-center p-2'>{name}</h4>
                     </Link>

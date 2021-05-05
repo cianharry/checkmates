@@ -21,10 +21,10 @@ export const getCheckins = () => async dispatch => {
 }
 
 // action to get all personal checkins
-export const getPersonalCheckins = (userId) => async dispatch => {
+export const getPersonalCheckins = () => async dispatch => {
     try {
         // getting all user's checkins from backend api
-        const res = await axios.get(`/api/checkins/user/${userId}`)
+        const res = await axios.get(`/api/checkins/user`)
         // dispatching the checkins reducer action
         dispatch({
             type: GET_CHECKINS,

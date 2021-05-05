@@ -17,7 +17,7 @@ const ProfileMilestones = ({ milestones: { title, description, privacy, dateAche
 }
 
 ProfileMilestones.propTypes = {
-    milestones: PropTypes.array.isRequired
+    milestones: PropTypes.object.isRequired
 }
 
 export default ProfileMilestones

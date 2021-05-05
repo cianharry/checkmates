@@ -7,11 +7,10 @@ import { Spinner } from 'react-bootstrap'
 import CheckinItem from './CheckinItem'
 import CheckinForm from './CheckinForm'
 
-const Checkins = ({ getCurrentUser, getPersonalCheckins, checkin: { checkins, loading }, profile: { user } }) => {
+const Checkins = ({ getPersonalCheckins, checkin: { checkins, loading } }) => {
     useEffect(() => {
-        getCurrentUser()
-        getPersonalCheckins(user._id)
-    }, [getCurrentUser, getPersonalCheckins])
+        getPersonalCheckins()
+    }, [getPersonalCheckins])
     return loading ? 
         <Spinner 
             animation="border"
@@ -33,15 +32,12 @@ const Checkins = ({ getCurrentUser, getPersonalCheckins, checkin: { checkins, lo
 }
 
 Checkins.propTypes = {
-    getCurrentUser: PropTypes.func.isRequired,
     getPersonalCheckins: PropTypes.func.isRequired,
     checkin: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
     checkin: state.checkin,
-    profile: state.auth
 })
 
-export default connect(mapStateToProps, { getPersonalCheckins, getCurrentUser })(Checkins)
+export default connect(mapStateToProps, { getPersonalCheckins })(Checkins)

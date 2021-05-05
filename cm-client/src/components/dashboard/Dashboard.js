@@ -17,7 +17,7 @@ const Dashboard = ({getCurrentUser, deleteUser, auth, profile}) => {
         getCurrentUser();
     }, [getCurrentUser])
     return profile.loading && profile.profile === null ? (
-        <Spinner 
+        <Spinner
             animation="border"
             role="status">
         </Spinner>
