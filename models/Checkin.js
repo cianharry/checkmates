@@ -23,6 +23,12 @@ const CheckinSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    sentiment: {
+        type: Number
+    },
+    magnitude: {
+        type: Number
+    },
     privacy: {
         type: Boolean,
         default: true

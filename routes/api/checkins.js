@@ -52,12 +52,12 @@ router.post('/',
             // REFERENCE: https://googleapis.dev/nodejs/language/latest/
             // Google Natural Language API call
             const [result] = await client.analyzeSentiment({ document: document });
-            const sentiment = result.documentSentiment;
+            const sentimentRes = result.documentSentiment;
             // ReqId:   R0
             // TestId:  T055
             console.log(`Text: ${req.body.maintext}`);
-            console.log(`Sentiment score: ${sentiment.score}`);
-            console.log(`Sentiment magnitude: ${sentiment.magnitude}`);
+            console.log(`Sentiment score: ${sentimentRes.score}`);
+            console.log(`Sentiment magnitude: ${sentimentRes.magnitude}`);
             
 
             const newCheckin = new Checkin({
@@ -66,6 +66,8 @@ router.post('/',
                 emotion: req.body.emotion,
                 intensity: req.body.intensity,
                 maintext: req.body.maintext,
+                sentiment: sentimentRes.score,
+                magnitude: sentimentRes.magnitude,
                 privacy: req.body.privacy,
                 name: user.name,
                 avatar: user.avatar
