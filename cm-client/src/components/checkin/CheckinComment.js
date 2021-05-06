@@ -16,21 +16,22 @@ const CheckinComment = ({ checkinId, addComment }) => {
                     addComment(checkinId, { text })
                     setText('')
                     }}>
-                    <div className="form-group">
+                    <div className="form-group m-auto">
                         <textarea
                             className='form-control'
                             name="text"
                             value={text}
-                            cols="30"
+                            cols="20"
                             rows="10"
                             placeholder='Add your comment'
                             onChange={e => setText(e.target.value)}
                             required
                             >
                         </textarea>
+                        <input type="submit" className='btn btn-secondary' value='Submit'/>
                     </div>
                     
-                    <input type="submit" className='btn btn-secondary' value='Submit'/>
+                    
                 </form>
             </div>
         </Fragment>

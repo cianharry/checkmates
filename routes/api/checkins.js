@@ -89,8 +89,8 @@ router.post('/',
 router.get('/', auth, async (req, res) => {
     try {
         // getting all checkins and sorting them by most recent date
-        const checkins = await Checkin.find().sort({ date: -1 });
-        //const checkins = await Checkin.find({ 'privacy': false }).sort({ date: -1 });
+        //const checkins = await Checkin.find().sort({ date: -1 });
+        const checkins = await Checkin.find({ 'privacy': false }).sort({ date: -1 });
         res.json(checkins);
     } catch (error) {
         console.error(error.message);

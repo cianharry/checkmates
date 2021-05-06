@@ -101,7 +101,7 @@ const EditProfile = ({ createUserProfile, getCurrentUser, history, profile: { pr
                 </div>
                 <div className="form-group">
                     <p className="lead">
-                        Gender
+                        Biological Sex
                     </p>
                     <input
                         className="form-control"

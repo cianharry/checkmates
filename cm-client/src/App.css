@@ -11,12 +11,26 @@ a:hover {
 
 /* Custom default button */
 .btn-secondary,
-.btn-secondary:hover,
 .btn-secondary:focus {
   color: #fff;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #0a2929;
   border: 0.05rem solid #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #0a2929;
+  color: #33cccc;
+}
+
+.btn-primary,
+.btn-primary:focus {
+  background-color: #33cccc;
+}
+
+.btn-primary:hover {
+  background-color: #33cccc;
+  color: #0a2929;
 }
 
 /*
@@ -80,6 +94,11 @@ body {
   .nav-masthead {
     float: right;
   }
+}
+
+.home-container {
+  opacity: 0.97;
+  border-radius: 6px;
 }
 
 /*
@@ -316,4 +335,14 @@ input {
 .profile-item-container {
   width: 300px;
   margin: auto;
+}
+
+.vid-container {
+  margin: 2 auto;
+  text-align: center;
+  background-color: #0a2929;
+  border-radius: 6px;
+  padding: 2rem;
+  opacity: 1;
+  color: #fff;
 }

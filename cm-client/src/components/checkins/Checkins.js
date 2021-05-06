@@ -6,6 +6,8 @@ import { getCurrentUser } from '../../actions/profile'
 import { Spinner } from 'react-bootstrap'
 import CheckinItem from './CheckinItem'
 import CheckinForm from './CheckinForm'
+import plutchik from '../../assets/plutchik.png'
+
 
 const Checkins = ({ getPersonalCheckins, checkin: { checkins, loading } }) => {
     useEffect(() => {
@@ -17,16 +19,22 @@ const Checkins = ({ getPersonalCheckins, checkin: { checkins, loading } }) => {
             role="status">
         </Spinner> : (
         <Fragment>
-            <CheckinForm/>
-            <h1>Checkins</h1>
-            <p className="lead">
-                <i className="fas fa-user"></i> Welcome to the checkmates community
-            </p>
-            <div className="checkins">
-                {checkins.map(checkin => (
-                    <CheckinItem key={checkin._id} checkin={checkin}/>
-                ))}
-            </div>
+            <div className="container text-center">
+                <div className="text-center">
+                    <img src={plutchik} alt=''/>
+                </div>
+                
+                <CheckinForm/>
+                <h1 className='mt-4'>Checkins</h1>
+                <p className="lead">
+                    <i className="fas fa-user"></i> Welcome to the checkmates community
+                </p>
+                <div className="checkins">
+                    {checkins.map(checkin => (
+                        <CheckinItem key={checkin._id} checkin={checkin}/>
+                    ))}
+                </div>
+            </div>  
         </Fragment>
     )
 }

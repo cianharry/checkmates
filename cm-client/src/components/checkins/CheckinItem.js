@@ -59,7 +59,7 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
                             <i className="fas fa-times"></i>
                         </button>
                     )}
-                    <p className="text-muted">Checkin date: <Moment format="DD/MM/YY">{date}</Moment></p>
+                    <p className="primary-col p-2"><Moment format="DD/MM/YY">{date}</Moment></p>
                 </div>
                
             </div>

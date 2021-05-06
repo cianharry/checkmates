@@ -116,7 +116,7 @@ const Register = (props) => {
                             />
                         
                         <button
-                            className="btn btn-lg btn-primary btn-block mt-5"
+                            className="btn btn-lg btn-secondary btn-block mt-5"
                             type="submit"
                             value="Register">Register</button>
                             <p className="mt-2">

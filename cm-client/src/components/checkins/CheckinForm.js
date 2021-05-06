@@ -56,7 +56,7 @@ const CheckinForm = ({ createCheckin }) => {
                         Checkin Title
                     </p>
                     <input
-                        className="form-control"
+                        className="form-control w-75 m-auto"
                         type="text"
                         placeholder=""
                         name="title"
@@ -70,7 +70,7 @@ const CheckinForm = ({ createCheckin }) => {
                 <div className="form-group">
                     <select
                      onChange={e => onChange(e)}
-                     className='form-control'
+                     className='form-control w-75 m-auto'
                      required
                      name="emotion"
                      value={emotion} >
@@ -91,9 +91,10 @@ const CheckinForm = ({ createCheckin }) => {
                         Intensity
                     </p>
                     <input
-                        className="form-control"
-                        type="number"
-                        placeholder="Emotion intensity"
+                        className="w-75"
+                        type="range"
+                        min="0"
+                        max="10"
                         required
                         name="intensity"
                         value={intensity}
@@ -104,8 +105,9 @@ const CheckinForm = ({ createCheckin }) => {
                         Checkin Entry
                     </p>
                     <textarea
-                        className="form-control"
+                        className="form-control  w-75 m-auto"
                         type="text"
+                        rows="10"
                         placeholder="Be honest and open with yourself"
                         name="maintext"
                         value={maintext}
