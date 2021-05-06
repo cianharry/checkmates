@@ -59,6 +59,7 @@ body {
   margin-bottom: 1rem;
   padding: 1rem;
   background-color: #0a2929;
+  border-radius: 6px;
 }
 
 .masthead-brand {
@@ -106,16 +107,15 @@ body {
  */
 .cover {
   padding: 0 1rem;
+  border-radius: 6px;
 }
-.cover .btn-lg {
-  color: #fff;
-}
-
 /*
  * Footer
  */
 .mastfoot {
-  color: #0a2929;
+  background-color: #0a2929;
+  color: #fff;
+  border-radius: 6px;
 }
 
 .form-signin {
@@ -345,4 +345,12 @@ input {
   padding: 2rem;
   opacity: 1;
   color: #fff;
+}
+
+.text-container {
+  border-radius: 6px;
+  width: 100%;
+}
+ul li {
+  text-decoration: none;
 }

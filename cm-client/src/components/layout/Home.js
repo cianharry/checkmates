@@ -10,7 +10,7 @@ const Home = (props) => {
         return <Redirect to='/dashboard'/>
     }
     return (
-        <div className="home-container bg-light">
+        <div className="home-container">
             <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
             <div className="vid-container">
                 <h1 className="cover-heading">Why Checkmates?</h1>
@@ -18,50 +18,52 @@ const Home = (props) => {
                 <p className="lead">At <strong>Checkmates</strong> we apply a methodothology defined by Plutchik, in which he identifies 8 primary emotions that are grouped into polar opposites. Combinations of these emotions are the building blocks of our daily experiences in life and the key to understanding personal emotional wellbeing. </p>
                 
             </div>
-            <main role="main" className="inner cover p-5 text-center">
+            <main role="main" className="inner cover mt-2 p-5 text-center bg-light">
                 <h2 className="cover-heading primary-col">Plutchik's Wheel of Emotions</h2>
                 <img src={plutchik} alt=''/>
-                <p className="lead">Join us today and see how regularly logging your emotional experinces in your digital journal can have a positive impact on your life</p>
+                <p className="lead">Join us today and see how constructive journaling can have a positive impact on your life</p>
                 <p className="lead">
                 <Link className="btn btn-lg btn-secondary" to='/register'>Sign Up</Link>
                 <br/>
                 <Link className="btn-primary btn-sm mt-2" to='/login'>Login</Link>
                 </p>
             </main>
-            <div className='vid-container'>
+            <div className='vid-container mt-2'>
                 <div className="container">
                     <p className="lead">Dr. Alan Watkins explains how utilizing such emotional tools helps us establish a plan of action</p>
-                    <iframe width="707" height="397" src="https://www.youtube.com/embed/h-rRgpPbR5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="707" height="397" src="https://www.youtube.com/embed/h-rRgpPbR5w" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
                 <div className="container m-auto">
-                    <p className="lead">A short video on the importance of emotional intelligence for kids</p>
-                    <iframe width="707" height="397" src="https://www.youtube.com/embed/SJOjpprbfeE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p className="lead">A short video on the importance of developing emotional intelligence for kids</p>
+                    <iframe width="707" height="397" src="https://www.youtube.com/embed/SJOjpprbfeE" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
             </div>
             
-            <div className='m-auto p-5'>
-                <p className="lead text-center">What?</p>
-                <ul>
-                    <li>Simplify emotions</li>
-                    <li>Provides an opportunity for sharing</li>
-                    <li>Empowers individuals and others</li>
-                </ul>
-
-                <p className="lead text-center"> How?</p>
-                <ul>
-                    <li>Learn to attend to your emotions regularly</li>
-                    <li>Become curious and patient with your emotions</li>
-                    <li>Talk about them, be honest with yourself and others</li>
-                    <li>Learn to accept different emotions through understanding</li>
-                    <li>Alter your emotions with other emotions</li>
-                </ul>
-            </div>
-
-            <footer className="mastfoot mt-auto text-center">
-                <div className="inner">
-                <p>For professional medical support, please contact the <a className='primary-col' href="https://www.hse.ie/eng/services/list/4/mental-health-services/">HSE</a>, provided by <a className='primary-col' href="/">Checkmates</a>.</p>
+            <div className='text-container mt-2 d-flex p-5 bg-light'>
+                <div className='w-50 text-center'>
+                    <p className="lead primary-col">What?</p>
+                        <p><i className="fas primary-col fa-angle-right"></i> Simplify emotions</p>
+                        <p><i className="fas primary-col fa-angle-right"></i> Provides an opportunity for sharing</p>
+                        <p><i className="fas primary-col fa-angle-right"></i> Empowers individuals and others</p>
                 </div>
-            </footer>
+                <div className='w-50 text-center'>
+                    <p className="lead primary-col"> How?</p>
+                        <p><i className="fas primary-col fa-angle-right"></i> Learn to attend to your emotions regularly</p>
+                        <p><i className="fas primary-col fa-angle-right"></i> Become curious and patient with your emotions</p>
+                        <p><i className="fas primary-col fa-angle-right"></i> Talk about them, be honest with yourself and others</p>
+                        <p><i className="fas primary-col fa-angle-right"></i> Learn to accept different emotions through understanding</p>
+                        <p><i className="fas primary-col fa-angle-right"></i> Alter your emotions with other emotions</p>
+                </div>
+
+                
+
+               
+            </div>
+            <footer className="mastfoot  text-center">
+                    <div className="inner mt-2">
+                    <p>For professional medical support, please contact the <a className='primary-col' href="https://www.hse.ie/eng/services/list/4/mental-health-services/">HSE</a>, provided by <a className='primary-col' href="/">Checkmates</a>.</p>
+                    </div>
+                </footer>
             </div>
         </div>
     )
