@@ -21,7 +21,7 @@ const CheckinsAll = ({ getCheckins, checkin: { checkins, loading }}) => {
             </p>
             <div className="checkins">
                 {checkins.map(checkin => (
-                    <CheckinItem key={checkin._id} checkin={checkin}/>
+                    <CheckinItem personalCheckins={false} key={checkin._id} checkin={checkin}/>
                 ))}
             </div>
         </Fragment>

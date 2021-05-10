@@ -43,6 +43,7 @@ router.post('/',
         try {
             // get the user account by id
             const user = await User.findById(req.user.id).select('-password');
+            
             // create the checkin from the user model and the request body
             const document = {
                 content: req.body.maintext,
@@ -58,6 +59,9 @@ router.post('/',
             console.log(`Text: ${req.body.maintext}`);
             console.log(`Sentiment score: ${sentimentRes.score}`);
             console.log(`Sentiment magnitude: ${sentimentRes.magnitude}`);
+
+            sent = sentimentRes.score.toFixed(3)
+            mag = sentimentRes.magnitude.toFixed(3)
             
 
             const newCheckin = new Checkin({
@@ -66,8 +70,8 @@ router.post('/',
                 emotion: req.body.emotion,
                 intensity: req.body.intensity,
                 maintext: req.body.maintext,
-                sentiment: sentimentRes.score,
-                magnitude: sentimentRes.magnitude,
+                sentiment: sent,
+                magnitude: mag,
                 privacy: req.body.privacy,
                 name: user.name,
                 avatar: user.avatar
@@ -86,7 +90,7 @@ router.post('/',
 // ROUTE        GET api/checkins
 // DESC         Route to get user checkins
 // PERMISSION   Private
-// Req_Id:      R03 - Create Checkin
+// Req_Id:      R03 - Create & Manage Checkins
 // Test_Id:     T016
 router.get('/', auth, async (req, res) => {
     try {
@@ -100,6 +104,11 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
+// ROUTE        GET api/checkins/user
+// DESC         Route to get users personal checkins
+// PERMISSION   Private
+// Req_Id:      R03 - Create & Manage Checkins
+// Test_Id:     T059
 router.get('/user', auth, async (req, res) => {
     try {
         // getting all user checkins and sorting them by most recent date

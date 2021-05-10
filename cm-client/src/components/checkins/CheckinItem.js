@@ -7,7 +7,7 @@ import { addReaction, deleteCheckin } from '../../actions/checkin'
 
 
 
-const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: { _id, title, emotion, intensity, maintext, privacy, name, user, avatar, reactions, comments, date } }) => {
+const CheckinItem = ({ addReaction, personalCheckins, deleteCheckin, auth, showButtons, checkin: { _id, title, emotion, intensity, maintext, sentiment, magnitude, privacy, name, user, avatar, reactions, comments, date } }) => {
     return (
         <Fragment>
             <div className="container checkin-container bg-bark d-flex">
@@ -16,6 +16,12 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
                         <img src={avatar} alt="" className="round-img"/>
                         <h4 className='primary-col text-center p-2'>{name}</h4>
                     </Link>
+                    {personalCheckins ? 
+                    <Fragment>
+                        <h6 className='primary-col text-center p-2'><strong className='text-light' > Sentiment: </strong>{sentiment}</h6>
+                        <h6 className='primary-col text-center p-2'><strong className='text-light'>Magnitude: </strong>{magnitude}</h6>
+                    </Fragment> : ''} 
+                    
                 </div>
                 <div className="checkin-body p-2 float-right bg-light ">
                     <h3 className='primary-col'>{title}</h3>
@@ -44,12 +50,7 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
                     </Link>
                     </Fragment> : ''}
                     
-                    <Link
-                        to={'/chats'}
-                        className="btn btn-secondary">
-                            <i className="fas fa-link"></i>{' '}
-                            Private Chat
-                    </Link>
+                   
                     {/* Checking that the checkin user is the current user
                         ReqId:  R0 
                         TestId: T050
@@ -69,7 +70,8 @@ const CheckinItem = ({ addReaction, deleteCheckin, auth, showButtons, checkin: {
 }
 
 CheckinItem.defaultProps = {
-    showButtons: true
+    showButtons: true,
+    personalCheckins: true
 }
 
 CheckinItem.propTypes = {

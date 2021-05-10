@@ -1,12 +1,13 @@
 import React , { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getCheckins, getPersonalCheckins } from '../../actions/checkin'
-import { getCurrentUser } from '../../actions/profile'
+import { getPersonalCheckins } from '../../actions/checkin'
 import { Spinner } from 'react-bootstrap'
 import CheckinItem from './CheckinItem'
 import CheckinForm from './CheckinForm'
 import plutchik from '../../assets/plutchik.png'
+import './Checkins.css';
+
 
 
 const Checkins = ({ getPersonalCheckins, checkin: { checkins, loading } }) => {
@@ -19,7 +20,7 @@ const Checkins = ({ getPersonalCheckins, checkin: { checkins, loading } }) => {
             role="status">
         </Spinner> : (
         <Fragment>
-            <div className="container text-center">
+            <div className="container-checkins text-center">
                 <div className="text-center">
                     <img src={plutchik} alt=''/>
                 </div>

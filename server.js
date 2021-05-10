@@ -56,13 +56,13 @@ io.use( async (socket, next) => {
 // ReqId:   R0 
 // TestId:  T058
 io.on('connection', (socket) => {
-    console.log('Connected: ')
+    console.log(`Connected: ${socket.id}`)
     socket.emit('message', 'Welcome to Checkmates Chat')
     // broadcast when a user joins
     socket.broadcast.emit('message', 'A user has joined the chat')
 
     socket.on('disconnect', () => {
-        console.log('Disconnected: ')
+        console.log('User Disconnected: ')
         io.emit('message', 'A user has left the chat')
     })
 

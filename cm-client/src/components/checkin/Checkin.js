@@ -25,7 +25,7 @@ const Checkin = ({ getCheckin, checkin: { checkin, loading }, match }) => {
     ) : (
         <Fragment>
             <Link to={'/checkins'} className='btn btn-light mb-2'>Go Back</Link>
-            <CheckinItem checkin={checkin} showButtons={false}/>
+            <CheckinItem personalCheckins={false} checkin={checkin} showButtons={false}/>
             <CheckinComment checkinId={checkin._id} />
             <div className="checkin-comments container">
                 {checkin.comments.map(comment => (

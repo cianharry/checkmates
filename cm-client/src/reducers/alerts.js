@@ -3,7 +3,7 @@ import { SET_ALERT, REMOVE_ALERT } from '../actions/types'
 const initState = [
 ];
 
-// function that updates the state based on the action payload 
+// function that updates the state based on the action type 
 export default function alerts(state = initState, action) {
     switch(action.type) {
         // adds the alert action payload to the state array

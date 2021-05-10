@@ -55,9 +55,6 @@ const Home = (props) => {
                         <p><i className="fas primary-col fa-angle-right"></i> Alter your emotions with other emotions</p>
                 </div>
 
-                
-
-               
             </div>
             <footer className="mastfoot  text-center">
                     <div className="inner mt-2">

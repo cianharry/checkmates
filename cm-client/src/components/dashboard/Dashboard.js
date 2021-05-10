@@ -39,6 +39,12 @@ const Dashboard = ({getCurrentUser, deleteUser, auth, profile}) => {
                     <div className="my-2">
                         <button onClick={() => deleteUser() } className="btn btn-danger">Delete Account</button>
                     </div>
+                    <Link
+                        to={'/chats'}
+                        className="btn btn-secondary">
+                            <i className="fas fa-link"></i>{' '}
+                            Private Chat
+                    </Link>
                 </Fragment>
             ) : (
                 <Fragment>
