@@ -1,91 +1,140 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getChats } from '../../actions/chats'
 import { Spinner } from 'react-bootstrap'
 import { io } from "socket.io-client";
+import './Chats.css'
 
+const CONNECTION_PORT = 'http://localhost:5000'
+let socket
 
-const Chats = ({ getChats, chat: { chats, loading }, match }) => {
-const [socket, setSocket] = React.useState(null)
+const Chats = ({ auth: {user}, chat: { chats, loading }, match }) => {
+    
+    const [room, setRoom] = useState('')
+    const [userName, setUserName] = useState('')
 
-  const socketSetup = () => {
-    const token = localStorage.token
-    if(token && !socket) {
-      const newSocket = io('http://localhost:5000', {
-        query: {
-            token: localStorage.getItem('x-auth-token')
-        }
-    })
-    // socket io connection
-    // ReqId:   R0 
-    // TestId:  T058
-    // socket disconnection
-    newSocket.on('disconnect', () => {
-      setSocket(null)
-      setTimeout(socketSetup, 3000)
-      console.log('Socket Disconnected')
-    })
-    // socket connection
-    newSocket.on('connect', () => {
-      console.log('Socket connected')
-    })
-
-    newSocket.on('message', message => {
-      console.log(message)
-    })
-    //
-    setSocket(newSocket)
-    }
-  }
-
-    const chatId = match.params.id 
+    const [message, setMessage] = useState('')
+    const [messageList, setMessageList] = useState([])
 
     useEffect(() => {
-        getChats()
-        /*
-        socket.emit('joinChat', {
-            chatId
-        })
+        socket = io(CONNECTION_PORT)
+        
+    }, [CONNECTION_PORT])
 
-        return () => {
-            socket.emit('leaveChat', {
-                chatId
-            })
+    useEffect(() => {
+        socket.on('receiveMessage', (data) => {
+            console.log(data)
+            setMessageList([...messageList, data])
+        })
+    })
+
+    const connectToRoom = () => {
+        socket.emit('joinRoom', ({ userName, room }))
+    }
+
+    const sendMessage = async () => {
+
+        let chatMessage = {
+            room: room,
+            content: {
+                userName: userName,
+                message: message
+            }
         }
-        */
-        socketSetup()
-    // eslint-disable-next-line
-    }, [socketSetup])
+
+        await socket.emit('sendMessage', chatMessage )
+        setMessageList([...messageList, chatMessage.content])
+        setMessage('')
+    }
+
     // Displaying the existing chats
     // ReqId:   R0 
     // TestId:  T057
-    return loading ? 
-        <Spinner 
-            animation="border"
-            role="status">
-        </Spinner> : (
+    return (
         <Fragment> 
-            <h1>Chats</h1>
-            {chats.map(chat => (
-                <Fragment key={chat._id}>
-                    <div className="container">
-                        {chat.title}
-                        <Link to={`/chat/${chat._id}`} className='btn btn-secondary ml-2'>Chat</Link>
-                    </div>
-                </Fragment>
-            ))}
+            <div className="chat-form-container">
+                <h1>Chats</h1>
+                <div className="form-group">
+                    <select
+                     onChange={(e) => {
+                        setRoom(e.target.value)
+                        setUserName(user.name)
+                    }}
+                    className='form-control'
+                    required
+                    name="room"
+                    value={room} >
+                        <option value="0">* Select Chat Room</option>
+                        <option value="Anxiety">Anxiety</option>
+                        <option value="Bipolar Disorders">Bipolar Disorders</option>
+                        <option value="Depression">Depression</option>
+                        <option value="Eating Disorders">Eating Disorders</option>
+                        <option value="Paranoia">Paranoia</option>
+                        <option value="Postnatal Depression">Postnatal Depression</option>
+                        <option value="PTSD">Post Traumtic Stress Disorder (PTSD)</option>
+                        <option value="Schizophrenia">Schizophrenia</option>
+                        <option value="Self Harm">Self Harm</option>
+                        <option value="Substance Abuse">Substance Abuse</option>
+                        <option value="Suicide">Suicide</option>
+                    </select>
+                    
+                </div>
+                <button
+                    className='btn btn-secondary'
+                    onClick={connectToRoom}>
+                        Join
+                </button>
+            </div>
+
+            <div className="chat-container">
+                <h1>{room}</h1>
+                <div className="chat-message-container">
+                    {messageList.map((val, key) => {
+                        return (
+                            <div className="messages-container" id={val.userName == userName ? 'me' : 'other'}>
+                                <div className="messages" >
+                                    <p className="primary"><strong>{val.userName}</strong></p>
+                                    <p className="lead">{val.message} </p>
+                                </div>
+                            </div>
+                            
+                        )
+                    })}
+                </div>
+                <div className='chat-input'>
+                    <input
+                        className=""
+                        name='message'
+                        value={message}
+                        type="text"
+                        placeholder='Enter Message'
+                        onChange={(e) => {
+                            setMessage(e.target.value)
+                            setUserName(user.name)
+                        }}
+                    />
+                    <button
+                        className='btn btn-secondary'
+                        onClick={sendMessage}>
+                            Send
+                    </button>
+                </div>
+
+            </div>
+           
         </Fragment>
     )
 }
 
 Chats.propTypes = {
     chat: PropTypes.object.isRequired,
-    getChats: PropTypes.func.isRequired}
-
+    auth: PropTypes.object.isRequired,
+}
 const mapStateToProps = state => ({
-    chat: state.chat
+    chat: state.chat,
+    auth: state.auth
 })
 
-export default connect(mapStateToProps, { getChats })(withRouter(Chats))
+export default connect(mapStateToProps, {  })(withRouter(Chats))

@@ -58,7 +58,7 @@ const Navbar = (props) => {
         <header className="masthead">
             <div className="inner">
                 <img src={symbol} alt='logo'/>
-                <Link className="masthead-brand h2 hide-sm" to='/'>Checkmates</Link>
+                <Link className="h2 hide-sm pl-3" to='/'>Checkmates</Link>
                 { !props.auth.loading && (<Fragment>{ props.auth.isAuthenticated ? userLinks : guestLinks }</Fragment>)}
             </div>
         </header>

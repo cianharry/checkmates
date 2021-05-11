@@ -66,20 +66,18 @@ io.on('connection', (socket) => {
         io.emit('message', 'A user has left the chat')
     })
 
-    socket.on('joinChat', ({chatId}) => {
-        socket.join(chatId)
-        console.log('User joined chat'+chatId)
+    socket.on('joinRoom', ({userName, room}) => {
+        socket.join(room)
+        console.log(`User ${userName} joined chat => ${room}`)
     })
 
-    socket.on('leaveChat', ({chatId}) => {
-        socket.leave(chatId)
-        console.log('User left chat'+chatId)
+    socket.on('leaveRoom', (data) => {
+        socket.leave(data)
+        console.log('User left chat'+data)
     })
 
-    socket.on('chatMessage', ({chatId, message}) => {
-        io.to(chatId).emit('newMessage', {
-            message
-        })
-        console.log('User joined chat'+chatId)
+    socket.on('sendMessage', ({room, content}) => {
+        socket.to(room).emit('receiveMessage', content)
+        console.log(`Message received from ${content.userName}: \n${content.message}`)
     })
 })
