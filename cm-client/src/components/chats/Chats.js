@@ -9,7 +9,7 @@ import './Chats.css'
 
 let CONNECTION_PORT
 if(process.env.NODE_ENV === 'production') {
-    CONNECTION_PORT = `http://localhost:${process.env.PORT}`
+    CONNECTION_PORT = `${process.env.PORT}`
 }
 else {
     CONNECTION_PORT = 'http://localhost:5000'
