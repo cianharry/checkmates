@@ -7,7 +7,14 @@ import { Spinner } from 'react-bootstrap'
 import { io } from "socket.io-client";
 import './Chats.css'
 
-const CONNECTION_PORT = 'http://localhost:5000'
+let CONNECTION_PORT
+if(process.env.NODE_ENV === 'production') {
+    CONNECTION_PORT = `http://localhost:${process.env.PORT}`
+}
+else {
+    CONNECTION_PORT = 'http://localhost:5000'
+}
+
 let socket
 
 const Chats = ({ auth: {user}, chat: { chats, loading }, match }) => {
