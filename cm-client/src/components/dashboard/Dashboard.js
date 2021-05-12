@@ -24,10 +24,11 @@ const Dashboard = ({getCurrentUser, deleteUser, auth, profile}) => {
     ) : (
         <Fragment>
             <div className='dashboard-container'>
-                <h1 className="mainheading">Dashboard</h1>
-                <div className="my-2">
+            <div className="my-2">
                     <button onClick={() => deleteUser() } className="btn btn-danger float-right">Delete Account</button>
                 </div>
+                <h1 className="mainheading">Dashboard</h1>
+                
                 <p className="lead">
                     <i className="fas fa-user pr-2"></i> 
                     Welcome back { auth.user && auth.user.name }

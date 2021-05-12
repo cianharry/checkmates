@@ -1,46 +1,45 @@
 .actions-container {
   border: 2px solid #fff;
-  border-radius: 50%;
-  height: 250px;
-  width: 250px;
+  border-radius: 6px;
+  height: 150px;
+  width: 150px;
   margin: auto;
   background-color: rgb(10, 41, 41, 0.97);
   color: #fff;
-  padding-top: 75px;
+  padding-top: 45px;
+  min-width: 30%;
 }
 
 .actions-div {
   text-align: center;
   display: flex;
   flex-direction: row;
-  width: 100%;
   background-color: rgb(51, 204, 204, 0.85);
   border-radius: 6px;
-  margin-bottom: 1rem;
   padding: 1rem;
   box-shadow: 15px #0a2929;
+  margin: 1rem auto;
 }
 
 .actions-container2 {
   border: 2px solid #fff;
-  border-radius: 50%;
-  height: 250px;
-  width: 250px;
+  border-radius: 6px;
+  height: 150px;
+  width: 150px;
   margin: auto;
   background-color: rgb(51, 204, 204, 0.85);
   color: #fff;
-  padding-top: 75px;
+  padding-top: 50px;
+  min-width: 30%;
 }
 
 .actions-div2 {
   text-align: center;
   display: flex;
   flex-direction: row;
-  width: 100%;
   background-color: rgb(10, 41, 41, 0.97);
-
   border-radius: 6px;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
   padding: 1rem;
   box-shadow: 15px #0a2929;
 }
