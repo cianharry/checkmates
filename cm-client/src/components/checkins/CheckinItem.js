@@ -27,7 +27,7 @@ const CheckinItem = ({ addReaction, personalCheckins, deleteCheckin, auth, showB
                     <h3 className='primary-col'>{title}</h3>
                     <h4><strong>Emotion: </strong>{emotion}</h4>
                     <h4><strong>Intensity: </strong>{intensity}</h4>
-                    <h4><strong>Privacy: </strong>{privacy ? 'Private' : 'Public'}</h4>
+                    <h4>{privacy ? <i className="fas fa-eye-slash"></i> : ''}</h4>
                     <p>{maintext}</p>
                     {/*
                     ReqId:  R0

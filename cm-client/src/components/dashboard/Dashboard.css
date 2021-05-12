@@ -1,0 +1,81 @@
+.actions-container {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  margin: auto;
+  background-color: rgb(10, 41, 41, 0.97);
+  color: #fff;
+  padding-top: 75px;
+}
+
+.actions-div {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: rgb(51, 204, 204, 0.85);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 15px #0a2929;
+}
+
+.actions-container2 {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  margin: auto;
+  background-color: rgb(51, 204, 204, 0.85);
+  color: #fff;
+  padding-top: 75px;
+}
+
+.actions-div2 {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: rgb(10, 41, 41, 0.97);
+
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 15px #0a2929;
+}
+
+.secondary-col {
+  color: #0a2929;
+}
+
+.milestones-container {
+  border-radius: 6px;
+  background-color: #0a2929;
+  color: #fff;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 350px;
+  border: 2px solid #fff;
+  max-width: 100%;
+}
+
+.milestones-div {
+  display: inline-block;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 1rem;
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.dashboard-container {
+  background-color: rgb(255, 255, 255, 0.9);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.ms {
+  background-color: rgb(51, 204, 204, 0.85);
+  border-radius: 6px;
+}

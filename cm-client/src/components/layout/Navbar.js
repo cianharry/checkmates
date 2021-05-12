@@ -16,16 +16,6 @@ const Navbar = (props) => {
         <nav className="nav nav-masthead justify-content-center">
             <Link
                 className="nav-link"
-                to='/checkins/all'>
-                    <i className="fas fa-hands-helping primary-col"></i> <span className='hide-sm'>  check-mates</span>
-            </Link>
-            <Link
-                className="nav-link"
-                to='/profiles'>
-                    <i className="fas fa-users primary-col"></i> <span className='hide-sm'>  circle</span>
-            </Link>
-            <Link
-                className="nav-link"
                 to='/dashboard'>
                     <i className='far fa-user-circle primary-col'/> <span className='hide-sm'> dashboard</span>
             </Link>

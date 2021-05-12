@@ -13,7 +13,7 @@ const ProfileMain = ({ profile: { experience, age, gender, bio, social, user: { 
                     <p className="fs-4"><strong>Journaling Knowledge: </strong>  {experience}</p>
                     {bio && (
                         <div>
-                            <h5>About {name}:</h5>
+                            <h5>About</h5>
                             <p className="fs-4"> {bio}</p>
                         </div>
                         
@@ -38,7 +38,8 @@ const ProfileMain = ({ profile: { experience, age, gender, bio, social, user: { 
                     {social && social.twitter && (
                         <a href={social.twitter} rel="noreferrer" target='_blank'><i className="fab fa-twitter fa-2x"></i></a>
                     )}
-                    <p className='pt-1'><strong>NOTE:</strong> you should only connect with people you know and trust. This is to help people share advice about mental health through social media platfroms</p>
+                    <p className='pt-1'><strong>NOTE:</strong> you should only connect with people you know and trust.</p>
+                    <p>This is to help people share advice about mental health through social media platfroms</p>
                 </div>
             </div>
                 

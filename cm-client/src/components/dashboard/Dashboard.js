@@ -23,37 +23,35 @@ const Dashboard = ({getCurrentUser, deleteUser, auth, profile}) => {
         </Spinner>
     ) : (
         <Fragment>
-            <h1 className="mainheading">Dashboard</h1>
-            <p className="lead">
-                <i className="fas fa-user pr-2"></i> 
-                Welcome back { auth.user && auth.user.name }
-            </p>
-            {/*
-            // Req_Id: R0 
-            // Test_Id: T035
-            */}
-            { profile.profile !== null ? (
-                <Fragment>
-                    <Actions/>
-                    <Milestone milestones={profile.profile.milestones} />
-                    <div className="my-2">
-                        <button onClick={() => deleteUser() } className="btn btn-danger">Delete Account</button>
-                    </div>
-                    <Link
-                        to={'/chats'}
-                        className="btn btn-secondary">
-                            <i className="fas fa-link"></i>{' '}
-                            Private Chat
-                    </Link>
-                </Fragment>
-            ) : (
-                <Fragment>
-                    <p>You need to add your profile information before accessing the checkmates dashboard </p>
-                    <Link to='/create-profile' className='btn btn-secondary'>
-                        Create Profile
-                    </Link>
-                </Fragment>
-            )}
+            <div className='dashboard-container'>
+                <h1 className="mainheading">Dashboard</h1>
+                <div className="my-2">
+                    <button onClick={() => deleteUser() } className="btn btn-danger float-right">Delete Account</button>
+                </div>
+                <p className="lead">
+                    <i className="fas fa-user pr-2"></i> 
+                    Welcome back { auth.user && auth.user.name }
+                </p>
+                {/*
+                // Req_Id: R0 
+                // Test_Id: T035
+                */}
+                { profile.profile !== null ? (
+                    <Fragment>
+                        <Actions/>
+                        <div className="ms">
+                            <Milestone milestones={profile.profile.milestones} />
+                        </div>
+                    </Fragment>
+                ) : (
+                    <Fragment>
+                        <p>You need to add your profile information before accessing the checkmates dashboard </p>
+                        <Link to='/create-profile' className='btn btn-secondary'>
+                            Create Profile
+                        </Link>
+                    </Fragment>
+                )}
+            </div>
         </Fragment>
     )
 }

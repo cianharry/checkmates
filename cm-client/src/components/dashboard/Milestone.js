@@ -10,39 +10,27 @@ const Milestone = props => {
     // if milestones exist each one is being map to its own row in the table
     // Req_Id:      R - Display Profile Milestones
     // Test_Id:     T042
-    const milestones = props.milestones && props.milestones.map(ms => (
-        <tr key={ms._id}>
-            <td>{ms.title}</td>
-            <td className='hide-sm'>{ms.description}</td>
-            <td className='hide-sm'>
-                <Moment format="DD/MM/YY">{ms.dateAcheived}</Moment>
-            </td>
-            <td>{ms.privacy ? 'Private' : 'Public' }</td>
-            <td>
-                <button onClick={() => props.deleteMilestone(ms._id)} className="btn btn-danger">Remove</button>
-            </td>
-        </tr>
-    ));
     return (
         <Fragment>
-            <h2 className="my-2">Personal Milestones</h2>
-
-            <table className="table table-striped table-light">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th className='hide-sm'>Description</th>
-                        <th className='hide-sm'>Date</th>
-                        <th className='hide-sm'>Status</th>
-                        <th></th>
-                    </tr>  
-                </thead>
-                <tbody>
-                    {milestones}
-                </tbody>
-            </table>
-
-            
+            <div className='container text-center'>
+                <h2 className="my-2 text-center">Your Milestones</h2>
+                {props.milestones && props.milestones.map(ms => (
+                    <div key={ms._id} className="milestones-div">
+                        <div className="milestones-container">
+                            <i  className="fas fa-medal"></i>
+                            <h4><strong className='primary-col'>Title:</strong> {ms.title}</h4>
+                            <p className="lead">{ms.description}</p>
+                            <p className="lead primary-col">
+                                <Moment format="DD/MM/YY">{ms.dateAcheived}</Moment>
+                            </p>
+                            <p>
+                                {ms.privacy ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}
+                            </p>
+                            <button onClick={() => props.deleteMilestone(ms._id)} className="btn btn-danger">Remove</button>
+                        </div>
+                    </div>
+                ))}    
+            </div>
         </Fragment>
     )
 }
