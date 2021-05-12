@@ -13,19 +13,19 @@ const Home = (props) => {
         <div className="home-container">
             <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
             <div className="vid-container">
-                <h1 className="cover-heading">Why Checkmates?</h1>
+                <h1 className="cover-heading">Why check-mates?</h1>
                 <p className="lead">The number of emotions we can experience as humans is estimated to exceed 34,000..... I know right?</p>
                 <p className="lead">At <strong>Checkmates</strong> we apply a methodothology defined by Plutchik, in which he identifies 8 primary emotions that are grouped into polar opposites. Combinations of these emotions are the building blocks of our daily experiences in life and the key to understanding personal emotional wellbeing. </p>
                 
             </div>
             <main role="main" className="inner cover mt-2 p-5 text-center bg-light">
                 <h2 className="cover-heading primary-col">Plutchik's Wheel of Emotions</h2>
-                <img src={plutchik} alt=''/>
+                <img className='home-logo' src={plutchik} alt=''/>
                 <p className="lead">Join us today and see how constructive journaling can have a positive impact on your life</p>
                 <p className="lead">
                 <Link className="btn btn-lg btn-secondary" to='/register'>Sign Up</Link>
                 <br/>
-                <Link className="btn-primary btn-sm mt-2" to='/login'>Login</Link>
+                <Link className="btn btn-primary mt-2" to='/login'>Login</Link>
                 </p>
             </main>
             <div className='vid-container mt-2'>
@@ -42,25 +42,27 @@ const Home = (props) => {
             <div className='text-container mt-2 d-flex p-5 bg-light'>
                 <div className='w-50 text-center'>
                     <p className="lead primary-col">What?</p>
-                        <p><i className="fas primary-col fa-angle-right"></i> Simplify emotions</p>
-                        <p><i className="fas primary-col fa-angle-right"></i> Provides an opportunity for sharing</p>
-                        <p><i className="fas primary-col fa-angle-right"></i> Empowers individuals and others</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Simplify emotions</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Provides an opportunity for sharing</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Empowers individuals and others</p>
                 </div>
                 <div className='w-50 text-center'>
                     <p className="lead primary-col"> How?</p>
-                        <p><i className="fas primary-col fa-angle-right"></i> Learn to attend to your emotions regularly</p>
-                        <p><i className="fas primary-col fa-angle-right"></i> Become curious and patient with your emotions</p>
-                        <p><i className="fas primary-col fa-angle-right"></i> Talk about them, be honest with yourself and others</p>
-                        <p><i className="fas primary-col fa-angle-right"></i> Learn to accept different emotions through understanding</p>
-                        <p><i className="fas primary-col fa-angle-right"></i> Alter your emotions with other emotions</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Learn to attend to your emotions regularly</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Become curious and patient with your emotions</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Talk about them, be honest with yourself and others</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Learn to accept different emotions through understanding</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Alter your emotions with other emotions</p>
                 </div>
 
-            </div>
-            <footer className="mastfoot  text-center">
+                </div>
+                <footer className="mastfoot  text-center">
                     <div className="inner mt-2">
-                    <p>For professional medical support, please contact the <a className='primary-col' href="https://www.hse.ie/eng/services/list/4/mental-health-services/">HSE</a>, provided by <a className='primary-col' href="/">Checkmates</a>.</p>
+                        <p>For professional medical support, please contact the <a className='primary-col' href="https://www.hse.ie/eng/services/list/4/mental-health-services/">HSE</a>, provided by <a className='primary-col' href="/">Checkmates</a>.</p>
+                        <p className=" mb-3">Checkmates © 2020-2021</p>
                     </div>
                 </footer>
+                
             </div>
         </div>
     )

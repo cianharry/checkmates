@@ -3,3 +3,7 @@
   background-color: rgb(255, 255, 255, 0.85);
   padding-bottom: 2rem;
 }
+
+.container-checkins img {
+  max-width: 100%;
+}

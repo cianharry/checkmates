@@ -17,28 +17,28 @@ const Navbar = (props) => {
             <Link
                 className="nav-link"
                 to='/checkins/all'>
-                    <i className="fas fa-hands-helping"></i> <span className='hide-sm'>  Check Mates</span>
+                    <i className="fas fa-hands-helping primary-col"></i> <span className='hide-sm'>  check-mates</span>
             </Link>
             <Link
                 className="nav-link"
                 to='/profiles'>
-                    <i className="fas fa-users"></i> <span className='hide-sm'>  Circle</span>
+                    <i className="fas fa-users primary-col"></i> <span className='hide-sm'>  circle</span>
             </Link>
             <Link
                 className="nav-link"
                 to='/dashboard'>
-                    <i className='far fa-user-circle'/> <span className='hide-sm'> Dashboard</span>
+                    <i className='far fa-user-circle primary-col'/> <span className='hide-sm'> dashboard</span>
             </Link>
             <Link
                 className="nav-link"
-                to='/checkins'><i className='fas fa-calendar-check'/><span className='hide-sm'> Checkins</span>
+                to='/checkins'><i className='fas fa-calendar-check primary-col'/><span className='hide-sm'> check-in</span>
             </Link>
             
             <Link
                 className="nav-link"
                 onClick={props.logout}
                 to='/'>
-                    <i className='fas fa-power-off'/><span className='hide-sm'> Logout</span> 
+                    <i className='fas fa-power-off primary-col'/><span className='hide-sm'> logout</span> 
             </Link>
         </nav>
     );
@@ -48,7 +48,7 @@ const Navbar = (props) => {
     const guestLinks = (
         
         <nav className="nav nav-masthead ">    
-            <Link className="nav-link" to='/'><i className="fas fa-home"></i> Home</Link>
+            <Link className="nav-link" to='/'><i className="fas fa-home primary-col"></i><span className='hide-sm ml-2'>Home</span> </Link>
             <Link className="nav-link" to='/register'>Register</Link>
             <Link className="nav-link" to='/login'>Login</Link>
         </nav>
@@ -57,8 +57,8 @@ const Navbar = (props) => {
     return (
         <header className="masthead">
             <div className="inner">
-                <img src={symbol} alt='logo'/>
-                <Link className="h2 hide-sm pl-3" to='/'>Checkmates</Link>
+                <img className="hide-sm" src={symbol} alt='logo'/>
+                <Link className="h2 hide-sm pl-3" to='/'>check-mate</Link>
                 { !props.auth.loading && (<Fragment>{ props.auth.isAuthenticated ? userLinks : guestLinks }</Fragment>)}
             </div>
         </header>

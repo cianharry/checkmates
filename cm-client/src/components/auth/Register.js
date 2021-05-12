@@ -122,7 +122,7 @@ const Register = (props) => {
                             <p className="mt-2">
                             Already have an account?
                         </p>
-                        <Link className="" to='/login'>Login</Link>
+                        <Link className="btn btn-primary" to='/login'>Login</Link>
                         <p className="mt-5 mb-3">Checkmates © 2020-2021</p>
                     </form>
                 </div>

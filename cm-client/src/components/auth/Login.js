@@ -64,7 +64,7 @@ const Login = (props) => {
                         <p className="mt-2">
                             Don't have an account?
                         </p>
-                        <Link className="" to='/register'>Register now</Link>
+                        <Link className="btn btn-primary" to='/register'>Register now</Link>
                         <p className="mt-5 mb-3">Checkmates © 2020-2021</p>
                     </form>
                 </div>

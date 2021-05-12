@@ -21,6 +21,7 @@ const Chats = ({ auth: {user}, chat: { chats, loading }, match }) => {
     
     const [room, setRoom] = useState('')
     const [userName, setUserName] = useState('')
+    const [inRoom, setInRoom] = useState(false)
 
     const [message, setMessage] = useState('')
     const [messageList, setMessageList] = useState([])
@@ -39,6 +40,12 @@ const Chats = ({ auth: {user}, chat: { chats, loading }, match }) => {
 
     const connectToRoom = () => {
         socket.emit('joinRoom', ({ userName, room }))
+        setInRoom(true)
+    }
+
+    const leaveRoom = () => {
+        socket.emit('leaveRoom', ({ userName, room }))
+        setInRoom(false)
     }
 
     const sendMessage = async () => {
@@ -61,75 +68,84 @@ const Chats = ({ auth: {user}, chat: { chats, loading }, match }) => {
     // TestId:  T057
     return (
         <Fragment> 
-            <div className="chat-form-container">
-                <h1>Chats</h1>
-                <div className="form-group">
-                    <select
-                     onChange={(e) => {
-                        setRoom(e.target.value)
-                        setUserName(user.name)
-                    }}
-                    className='form-control'
-                    required
-                    name="room"
-                    value={room} >
-                        <option value="0">* Select Chat Room</option>
-                        <option value="Anxiety">Anxiety</option>
-                        <option value="Bipolar Disorders">Bipolar Disorders</option>
-                        <option value="Depression">Depression</option>
-                        <option value="Eating Disorders">Eating Disorders</option>
-                        <option value="Paranoia">Paranoia</option>
-                        <option value="Postnatal Depression">Postnatal Depression</option>
-                        <option value="PTSD">Post Traumtic Stress Disorder (PTSD)</option>
-                        <option value="Schizophrenia">Schizophrenia</option>
-                        <option value="Self Harm">Self Harm</option>
-                        <option value="Substance Abuse">Substance Abuse</option>
-                        <option value="Suicide">Suicide</option>
-                    </select>
-                    
-                </div>
-                <button
-                    className='btn btn-secondary'
-                    onClick={connectToRoom}>
-                        Join
-                </button>
-            </div>
-
-            <div className="chat-container">
-                <h1>{room}</h1>
-                <div className="chat-message-container">
-                    {messageList.map((val, key) => {
-                        return (
-                            <div className="messages-container" id={val.userName == userName ? 'me' : 'other'}>
-                                <div className="messages" >
-                                    <p className="primary"><strong>{val.userName}</strong></p>
-                                    <p className="lead">{val.message} </p>
+            
+            {inRoom ? 
+                <div className="chat-container">
+                    <h1>{room}</h1>
+                    <div className="chat-message-container">
+                        {messageList.map((val, key) => {
+                            return (
+                                <div className="messages-container" id={val.userName == userName ? 'me' : 'other'}>
+                                    <div className="messages" >
+                                        <p className="primary"><strong>{val.userName}</strong></p>
+                                        <p className="lead">{val.message} </p>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                        )
-                    })}
-                </div>
-                <div className='chat-input'>
-                    <input
-                        className=""
-                        name='message'
-                        value={message}
-                        type="text"
-                        placeholder='Enter Message'
+                                
+                            )
+                        })}
+                    </div>
+                    <div className='chat-input'>
+                        <input
+                            className=""
+                            name='message'
+                            value={message}
+                            type="text"
+                            placeholder='Enter Message'
+                            onChange={(e) => {
+                                setMessage(e.target.value)
+                                setUserName(user.name)
+                            }}
+                        />
+                        <button
+                            className='btn btn-secondary'
+                            onClick={sendMessage}>
+                                Send
+                        </button>
+                    </div>
+                    <button
+                        className='btn btn-danger'
+                        onClick={leaveRoom}
+                        >
+                        Leave
+                    </button>
+                </div> 
+                : 
+                <div className="chat-form-container">
+                    <h1>Chats</h1>
+                    <div className="form-group">
+                        <select
                         onChange={(e) => {
-                            setMessage(e.target.value)
+                            setRoom(e.target.value)
                             setUserName(user.name)
                         }}
-                    />
+                        className='form-control'
+                        required
+                        name="room"
+                        value={room} >
+                            <option value="0">* Select Chat Room</option>
+                            <option value="Anxiety">Anxiety</option>
+                            <option value="Bipolar Disorders">Bipolar Disorders</option>
+                            <option value="Depression">Depression</option>
+                            <option value="Eating Disorders">Eating Disorders</option>
+                            <option value="Paranoia">Paranoia</option>
+                            <option value="Postnatal Depression">Postnatal Depression</option>
+                            <option value="PTSD">Post Traumtic Stress Disorder (PTSD)</option>
+                            <option value="Schizophrenia">Schizophrenia</option>
+                            <option value="Self Harm">Self Harm</option>
+                            <option value="Substance Abuse">Substance Abuse</option>
+                            <option value="Suicide">Suicide</option>
+                        </select>
+                        
+                    </div>
                     <button
                         className='btn btn-secondary'
-                        onClick={sendMessage}>
-                            Send
+                        onClick={connectToRoom}>
+                            Join
                     </button>
-                </div>
-
-            </div>
+                </div> 
+            }
+            
            
         </Fragment>
     )

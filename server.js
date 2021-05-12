@@ -72,9 +72,9 @@ io.on('connection', (socket) => {
         console.log(`User ${userName} joined chat => ${room}`)
     })
 
-    socket.on('leaveRoom', (data) => {
-        socket.leave(data)
-        console.log('User left chat'+data)
+    socket.on('leaveRoom', ({userName, room}) => {
+        socket.leave(room)
+        console.log(`${userName} has left chat room ${room}`)
     })
 
     socket.on('sendMessage', ({room, content}) => {
