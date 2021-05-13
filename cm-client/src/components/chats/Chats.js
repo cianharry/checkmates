@@ -1,9 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getChats } from '../../actions/chats'
-import { Spinner } from 'react-bootstrap'
 import { io } from "socket.io-client";
 import './Chats.css'
 
@@ -17,7 +14,7 @@ else {
 
 let socket
 
-const Chats = ({ auth: {user}, chat: { chats, loading }, match }) => {
+const Chats = ({ auth: {user} }) => {
     
     const [room, setRoom] = useState('')
     const [userName, setUserName] = useState('')
@@ -62,10 +59,7 @@ const Chats = ({ auth: {user}, chat: { chats, loading }, match }) => {
         setMessageList([...messageList, chatMessage.content])
         setMessage('')
     }
-
-    // Displaying the existing chats
-    // ReqId:   R0 
-    // TestId:  T057
+    
     return (
         <Fragment> 
             
@@ -152,12 +146,10 @@ const Chats = ({ auth: {user}, chat: { chats, loading }, match }) => {
 }
 
 Chats.propTypes = {
-    chat: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
 }
 const mapStateToProps = state => ({
-    chat: state.chat,
     auth: state.auth
 })
 
-export default connect(mapStateToProps, {  })(withRouter(Chats))
+export default connect(mapStateToProps, {  })(Chats)
