@@ -50,7 +50,8 @@ router.post('/',
                 type: 'PLAIN_TEXT'
             }
             
-            // REFERENCE: https://googleapis.dev/nodejs/language/latest/
+            // REFERENCE: This code snippet was developed with the help of the google NL API documentation
+            // avilable at: https://googleapis.dev/nodejs/language/latest/
             // Google Natural Language API call
             const [result] = await client.analyzeSentiment({ document: document });
             const sentimentRes = result.documentSentiment;

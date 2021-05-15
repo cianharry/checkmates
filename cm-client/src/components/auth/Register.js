@@ -6,6 +6,15 @@ import { setAlert } from '../../actions/alerts';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
+/***************************************************************************************
+*    Title: DevConnector
+*    Author: Brad Traversy
+*    Date: 2019
+*    Code version: 2.0
+*    Availability: https://github.com/bradtraversy/devconnector_2.0
+*
+***************************************************************************************/
+
 const Register = (props) => {
     // setting the initial state of the formData constant
     const [formData, setFormData] = useState({

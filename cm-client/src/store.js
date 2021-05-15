@@ -1,5 +1,6 @@
 // Redux Store
-// REFERENCE: https://github.com/reduxjs/redux-devtools#documentation 
+// REFERENCE: This code snippet was developed using the Redux Developers Doumentation
+// Available at: https://github.com/reduxjs/redux-devtools#documentation 
 
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';

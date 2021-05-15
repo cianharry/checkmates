@@ -12,6 +12,18 @@ else {
     CONNECTION_PORT = 'http://localhost:5000'
 }
 
+// GENERAL DOCUMENTATION: https://www.npmjs.com/package/socket.io 
+// GENERAL DOCUMENTATION: https://socket.io/docs/v3/client-initialization/
+
+/***************************************************************************************
+*    Title: Socket-Chat-App
+*    Author: Pedro Machado
+*    Date: 2020
+*    Code version: 1.0
+*    Availability: https://github.com/machadop1407/Socket-Chat-App
+*
+***************************************************************************************/
+
 let socket
 
 const Chats = ({ auth: {user} }) => {
@@ -59,7 +71,7 @@ const Chats = ({ auth: {user} }) => {
         setMessageList([...messageList, chatMessage.content])
         setMessage('')
     }
-    
+
     return (
         <Fragment> 
             
@@ -139,8 +151,6 @@ const Chats = ({ auth: {user} }) => {
                     </button>
                 </div> 
             }
-            
-           
         </Fragment>
     )
 }

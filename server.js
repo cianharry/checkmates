@@ -1,10 +1,7 @@
 const express = require('express');
 const connectDB = require('./config/db')
 const path = require('path')
-const auth = require('./middle/auth');
 var cors = require('cors');
-const jwt = require('jsonwebtoken')
-const config = require('config');
 
 const app = express();
 
@@ -28,7 +25,6 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/checkins', require('./routes/api/checkins'));
 app.use('/api/chats', require('./routes/api/chats'));
-//app.use('/api/message', require('./routes/api/message'));
 
 // serve static assets in production
 if(process.env.NODE_ENV === 'production') {
@@ -61,22 +57,22 @@ io.on('connection', (socket) => {
     socket.emit('message', 'Welcome to Checkmates Chat')
     // broadcast when a user joins
     socket.broadcast.emit('message', 'A user has joined the chat')
-
+    // socket disconnection
     socket.on('disconnect', () => {
         console.log('User Disconnected: ')
         io.emit('message', 'A user has left the chat')
     })
-
+    // joining chat room
     socket.on('joinRoom', ({userName, room}) => {
         socket.join(room)
         console.log(`User ${userName} joined chat => ${room}`)
     })
-
+    // leaving chat room
     socket.on('leaveRoom', ({userName, room}) => {
         socket.leave(room)
         console.log(`${userName} has left chat room ${room}`)
     })
-
+    // sending a chat message
     socket.on('sendMessage', ({room, content}) => {
         socket.to(room).emit('receiveMessage', content)
         console.log(`Message received from ${content.userName}: \n${content.message}`)

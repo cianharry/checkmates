@@ -7,6 +7,15 @@ const initState = {
     error: {}
 }
 
+/***************************************************************************************
+*    Title: DevConnector
+*    Author: Brad Traversy
+*    Date: 2019
+*    Code version: 2.0
+*    Availability: https://github.com/bradtraversy/devconnector_2.0
+*
+***************************************************************************************/
+
 export default function checkin(state = initState, action) {
     switch(action.type) {
         case GET_CHECKINS:

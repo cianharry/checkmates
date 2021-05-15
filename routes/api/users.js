@@ -4,7 +4,6 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
-// REFERENCE https://express-validator.github.io/docs/
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
@@ -68,7 +67,6 @@ router.post('/', [
 
             await user.save();
             // return JWT for immediate login
-            // REFERENCE https://www.npmjs.com/package/jsonwebtoken 
             // Req_Id: R02
             // Test_Id: T006
             const payload = {

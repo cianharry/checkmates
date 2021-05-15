@@ -3,6 +3,15 @@ const router = express.Router();
 const auth = require('../../middle/auth');
 const { check, validationResult } = require('express-validator');
 
+/***************************************************************************************
+*    Title: DevConnector
+*    Author: Brad Traversy
+*    Date: 2019
+*    Code version: 2.0
+*    Availability: https://github.com/bradtraversy/devconnector_2.0
+*
+***************************************************************************************/
+
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Checkin = require('../../models/Checkin');

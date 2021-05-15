@@ -23,9 +23,7 @@ import Checkins from './components/checkins/Checkins';
 import Checkin from './components/checkin/Checkin';
 import Chats from './components/chats/Chats';
 import CheckinsAll from './components/checkins/CheckinsAll';
-// REFERENCE 
-// https://www.npmjs.com/package/socket.io 
-// https://socket.io/docs/v3/client-initialization/
+
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
