@@ -15,14 +15,16 @@ const CheckinsAll = ({ getCheckins, checkin: { checkins, loading }}) => {
             role="status">
         </Spinner> : (
         <Fragment>
-            <h1>Checkins</h1>
-            <p className="lead">
-                <i className="fas fa-user"></i> Welcome to the checkmates community
-            </p>
-            <div className="checkins">
-                {checkins.map(checkin => (
-                    <CheckinItem personalCheckins={false} key={checkin._id} checkin={checkin}/>
-                ))}
+            <div className="profile-form">
+                <h1 className='check-font text-center'>Community</h1>
+                <p className="lead text-center">
+                    <i className="fas fa-user primary-col"></i> check-up on freinds and other check-mate users
+                </p>
+                <div className="checkins pt-5">
+                    {checkins.map(checkin => (
+                        <CheckinItem personalCheckins={false} key={checkin._id} checkin={checkin}/>
+                    ))}
+                </div>
             </div>
         </Fragment>
     )

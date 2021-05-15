@@ -4,13 +4,13 @@ import Moment from 'react-moment'
 
 const ProfileMilestones = ({ milestones: { title, description, privacy, dateAcheived } }) => {
     return (
-        <div className="col-md-8 m-auto text-center">
-            <div className="h-100 mb-2 p-5 bg-light border rounded-3">
+        <div className="container">
+            <div className="milestone-container p-5">
                 <h2>{title}</h2>
-                <p>{description}</p>
-                <p><strong>Date Acheived: </strong><Moment format="DD/MM/YY">{dateAcheived}</Moment></p>
-                <p>{privacy ? 'private' : 'public'}</p>
-                <button className="btn btn-secondary" type="button">Congratulate</button>
+                <p className='lead check-font'>{description}</p>
+                <p><strong>Acheived: </strong><Moment format="DD/MM/YY">{dateAcheived}</Moment></p>
+                <p>{privacy}</p>
+                <button className="btn btn-primary" type="button">Congratulate</button>
             </div>
         </div>
     )

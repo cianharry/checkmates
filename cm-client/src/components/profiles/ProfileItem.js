@@ -16,7 +16,7 @@ const ProfileItem = ({ profile: {
                 <div>
                     <h2>{name}</h2>
                     <p style={{color: '#33cccc'}} className="lead">Exp: {experience}</p>
-                    <Link to={`/profile/${_id}`} className='btn btn-secondary' >
+                    <Link to={`/profile/${_id}`} className='btn btn-primary' >
                         View Profile
                     </Link>
                 </div>

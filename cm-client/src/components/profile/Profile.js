@@ -21,25 +21,28 @@ const Profile = ({ getProfileById, profile: {profile, loading, milestones }, aut
                 </Spinner>
                 ) : (
                     <Fragment>
-                        <Link className="btn btn-light my-1" to="/profiles">Go Back</Link>
-                        {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id &&
-                        (<Link className="btn btn-secondary ml-1 my-1" to="/edit-profile">Edit</Link>) }
-                        <div className="container">
-                            <ProfileMain profile={profile} />
-                            
-                            <h1 className='text-center'>User Milestones</h1>
-                            {profile.milestones.length > 0 ? 
-                            ( 
-                                <Fragment>
-                                    {profile.milestones.map(pms => (
-                                        <ProfileMilestones key={pms._id} milestones={pms}/>
-                                    ))
-                                    }
-                                </Fragment>
-                            ) : (
-                                <h4>No public milestones to display</h4>
-                            )}
+                        <div className="profile-form">
+                            <Link className="btn btn-secondary my-1" to="/profiles">Go Back</Link>
+                            {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id &&
+                            (<Link className="btn btn-primary ml-1 my-1" to="/edit-profile">Edit</Link>) }
+                            <div className="profile-display-container">
+                                <ProfileMain profile={profile} />
+                                
+                                <h1 className='text-center primary-col check-font'>User Milestones</h1>
+                                {profile.milestones.length > 0 ? 
+                                ( 
+                                    <Fragment>
+                                        {profile.milestones.map(pms => (
+                                            <ProfileMilestones key={pms._id} milestones={pms}/>
+                                        ))
+                                        }
+                                    </Fragment>
+                                ) : (
+                                    <h4>No public milestones to display</h4>
+                                )}
+                            </div>
                         </div>
+                        
                     </Fragment>
                 )}
         </Fragment>

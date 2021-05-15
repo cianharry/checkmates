@@ -42,8 +42,8 @@ const CheckinForm = ({ createCheckin }) => {
 
     return (
         <Fragment>
-            <h1 className="large">
-                Create Checkin
+            <h1 className="large check-font">
+                Create Check-in
             </h1>
             
             
@@ -52,8 +52,8 @@ const CheckinForm = ({ createCheckin }) => {
                     <i  className="fas fa-user"></i> Take a deep breath and focus on you for the next few minutes...
                 </p>
                 <div className="form-group">
-                    <p className="lead">
-                        Checkin Title
+                    <p className="large check-font">
+                        Title
                     </p>
                     <input
                         className="form-control w-75 m-auto"
@@ -87,7 +87,7 @@ const CheckinForm = ({ createCheckin }) => {
                     
                 </div>
                 <div className="form-group">
-                    <p className="lead">
+                    <p className="large check-font">
                         Intensity
                     </p>
                     <input
@@ -101,8 +101,8 @@ const CheckinForm = ({ createCheckin }) => {
                         onChange={e => onChange(e)} />
                 </div>
                 <div className="form-group">
-                    <p className="lead">
-                        Checkin Entry
+                    <p className="large check-font">
+                        Details
                     </p>
                     <textarea
                         className="form-control  w-75 m-auto"
@@ -126,8 +126,8 @@ const CheckinForm = ({ createCheckin }) => {
                     </p>
                 </div>
                 
-                <input type="submit" className="btn btn-secondary my-1 mr-1" />
-                <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+                <input type="submit" className="btn btn-primary my-1 mr-1" />
+                <Link className="btn btn-secondary my-1" to="/dashboard">Go Back</Link>
             </form>
         </Fragment>
     )

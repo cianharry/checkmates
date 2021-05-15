@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Spinner } from 'react-bootstrap'
 import { getProfiles } from '../../actions/profile'
 import ProfileItem from './ProfileItem'
+import './Profile.css'
 
 
 const Profiles = ({ getProfiles, profile: { profiles, loading }}) => {

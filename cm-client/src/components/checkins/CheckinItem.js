@@ -24,11 +24,11 @@ const CheckinItem = ({ addReaction, personalCheckins, deleteCheckin, auth, showB
                     
                 </div>
                 <div className="checkin-body p-2 float-right bg-light ">
-                    <h3 className='primary-col'>{title}</h3>
+                    <h2 className='primary-col check-font'>{title}</h2>
                     <h4><strong>Emotion: </strong>{emotion}</h4>
                     <h4><strong>Intensity: </strong>{intensity}</h4>
-                    <h4>{privacy ? <i className="fas fa-eye-slash"></i> : ''}</h4>
-                    <p>{maintext}</p>
+                    <h4>{privacy ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}</h4>
+                    <p className='check-font lead'>{maintext}</p>
                     {/*
                     ReqId:  R0
                     TestId: T048    

@@ -55,6 +55,7 @@ const Chats = ({ auth: {user} }) => {
     const leaveRoom = () => {
         socket.emit('leaveRoom', ({ userName, room }))
         setInRoom(false)
+        setMessageList([])
     }
 
     const sendMessage = async () => {
@@ -77,11 +78,11 @@ const Chats = ({ auth: {user} }) => {
             
             {inRoom ? 
                 <div className="chat-container">
-                    <h1>{room}</h1>
+                    <h1 className='check-font'>{room}</h1>
                     <div className="chat-message-container">
                         {messageList.map((val, key) => {
                             return (
-                                <div className="messages-container" id={val.userName == userName ? 'me' : 'other'}>
+                                <div className="messages-container" id={val.userName === userName ? 'me' : 'other'}>
                                     <div className="messages" >
                                         <p className="primary"><strong>{val.userName}</strong></p>
                                         <p className="lead">{val.message} </p>
@@ -118,7 +119,7 @@ const Chats = ({ auth: {user} }) => {
                 </div> 
                 : 
                 <div className="chat-form-container">
-                    <h1>Chats</h1>
+                    <h1 className='check-font large'>check-mate chats</h1>
                     <div className="form-group">
                         <select
                         onChange={(e) => {

@@ -13,13 +13,13 @@ const Milestone = props => {
     return (
         <Fragment>
             <div className='container text-center'>
-                <h2 className="my-2 text-center">Your Milestones</h2>
+                <h1 className="my-2 text-center check-font">Your Milestones</h1>
                 {props.milestones && props.milestones.map(ms => (
                     <div key={ms._id} className="milestones-div">
                         <div className="milestones-container">
                             <i  className="fas fa-medal"></i>
                             <h4><strong className='primary-col'>Title:</strong> {ms.title}</h4>
-                            <p className="lead">{ms.description}</p>
+                            <p className="lead check-font">{ms.description}</p>
                             <p className="lead primary-col">
                                 <Moment format="DD/MM/YY">{ms.dateAcheived}</Moment>
                             </p>
