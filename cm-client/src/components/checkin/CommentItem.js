@@ -8,23 +8,22 @@ import { deleteComment } from '../../actions/checkin'
 const CommentItem = ({ auth, deleteComment, checkinId, comment: { _id, text, name, avatar, user, date } }) => {
     return (
         <Fragment>
-            <div className='container'>
-                <div className="comment-container d-flex bg-white p-1 my-1">
-                    <div>
+                <div className="comment-container">
+                    <div className='text-center'>
                         <Link to={`/profile/${user}`}>
                         <img
-                            className="round-img"
+                            className="round-img text-center pt-2"
                             src={avatar}
                             alt=""
                         />
-                        <h4 className='bg-bark text-center'>{name}</h4>
+                        <h4 className='primary-col'>{name}</h4>
                         </Link>
                     </div>
-                    <div>
-                        <p className="my-1 p-4">
+                    <div className='comment-body'>
+                        <p className="check-font lead">
                             {text}
                         </p>
-                        <p className="p-4">
+                        <p className="p-2 primary-col">
                             Posted on <Moment format="DD/MM/YY">{date}</Moment>
                         </p>
                         {/*
@@ -32,7 +31,7 @@ const CommentItem = ({ auth, deleteComment, checkinId, comment: { _id, text, nam
                             TestId:     T054
                         */}
                         {!auth.loading && user === auth.user._id && (
-                            <button onClick={e => deleteComment(checkinId, _id)} className="btn btn-danger float-right">
+                            <button onClick={e => deleteComment(checkinId, _id)} className="btn btn-danger">
                                 <i className="fas fa-times"></i>
                             </button>
                         )}
@@ -40,7 +39,6 @@ const CommentItem = ({ auth, deleteComment, checkinId, comment: { _id, text, nam
                     
                 </div>
                 
-            </div>
             
         </Fragment>
     )

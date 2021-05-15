@@ -24,14 +24,17 @@ const Checkin = ({ getCheckin, checkin: { checkin, loading }, match }) => {
         </Fragment>
     ) : (
         <Fragment>
-            <Link to={'/checkins'} className='btn btn-light mb-2'>Go Back</Link>
-            <CheckinItem personalCheckins={false} checkin={checkin} showButtons={false}/>
-            <CheckinComment checkinId={checkin._id} />
-            <div className="checkin-comments container">
-                {checkin.comments.map(comment => (
-                    <CommentItem key={comment._id} comment={comment} checkinId={checkin._id}/>
-                ))}
+            <div className="profile-form text-center">
+                <Link to={'/checkins'} className='btn btn-secondary mb-2'>Go Back</Link>
+                <CheckinItem personalCheckins={false} checkin={checkin} showButtons={false}/>
+                <CheckinComment checkinId={checkin._id} />
+                <div className="checkin-comments">
+                    {checkin.comments.map(comment => (
+                        <CommentItem key={comment._id} comment={comment} checkinId={checkin._id}/>
+                    ))}
+                </div>
             </div>
+           
         </Fragment>
         
     )

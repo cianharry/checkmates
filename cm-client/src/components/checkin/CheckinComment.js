@@ -7,7 +7,7 @@ const CheckinComment = ({ checkinId, addComment }) => {
     const [text, setText] = useState('')
     return (
         <Fragment>
-            <div className="container">
+            <div className="comment-form">
                 <form onSubmit={e => {
                     e.preventDefault()
                     {/*
@@ -28,7 +28,7 @@ const CheckinComment = ({ checkinId, addComment }) => {
                             required
                             >
                         </textarea>
-                        <input type="submit" className='btn btn-secondary' value='Submit'/>
+                        <input type="submit" className='btn btn-primary mt-2' value='Submit'/>
                     </div>
                     
                     

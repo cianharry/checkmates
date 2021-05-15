@@ -13,7 +13,7 @@ a:hover {
 .btn-secondary,
 .btn-secondary:focus {
   color: #fff;
-  text-shadow: none; /* Prevent inheritance from `body` */
+  text-shadow: none;
   background-color: #0a2929;
   border: 0.05rem solid #fff;
 }
@@ -64,6 +64,12 @@ iframe {
   max-width: 100%;
 }
 
+.root-container {
+  width: 1600px;
+  max-width: 100%;
+  margin: auto;
+}
+
 /*
  * Header
  */
@@ -73,7 +79,8 @@ iframe {
   margin-bottom: 1rem;
   padding: 1rem;
   background-color: #0a2929;
-  border-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .masthead-brand {
@@ -201,10 +208,6 @@ input[type='text'] {
     margin-top: 8rem;
   }
 
-  .checkin-container {
-    display: none;
-  }
-
   .symbol img {
     display: none;
   }
@@ -320,27 +323,6 @@ input {
   border-radius: 50%;
 }
 
-.checkin-container {
-  width: 900px;
-  max-width: 100%;
-  border-radius: 6px;
-}
-
-.checkin-body {
-  width: 100%;
-}
-
-.comment-container {
-  width: 100%;
-  border: 2px solid #0a2929;
-  border-radius: 6px;
-}
-
-.profile-item-container {
-  width: 300px;
-  margin: auto;
-}
-
 .vid-container {
   margin: 2 auto;
   text-align: center;
@@ -354,7 +336,4 @@ input {
 .text-container {
   border-radius: 6px;
   width: 100%;
-}
-ul li {
-  text-decoration: none;
 }

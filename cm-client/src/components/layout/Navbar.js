@@ -47,7 +47,8 @@ const Navbar = (props) => {
     return (
         <header className="masthead">
             <div className="inner">
-                <Link className="header-brand hide-sm pl-3" to='/'>check-mate</Link>
+                <i className="fas fa-pencil-alt primary-col hide-sm"></i>
+                <Link className="header-brand hide-sm pl-2" to='/'>check-mate</Link>
                 { !props.auth.loading && (<Fragment>{ props.auth.isAuthenticated ? userLinks : guestLinks }</Fragment>)}
             </div>
         </header>

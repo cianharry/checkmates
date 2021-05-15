@@ -49,7 +49,7 @@ const CheckinForm = ({ createCheckin }) => {
             
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <p className="lead">
-                    <i  className="fas fa-user"></i> Take a deep breath and focus on you for the next few minutes...
+                    <i  className="fas fa-user primary-col"></i> Take a deep breath and focus on you for the next few minutes...
                 </p>
                 <div className="form-group">
                     <p className="large check-font">

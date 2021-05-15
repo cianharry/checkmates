@@ -27,6 +27,7 @@
   background-color: rgb(255, 255, 255, 0.95);
   border-radius: 6px;
   padding: 2rem;
+  margin: 1rem;
 }
 
 .milestone-container {
@@ -34,5 +35,10 @@
   max-width: 100%;
   border-radius: 6px;
   background-color: rgb(255, 255, 255, 0.95);
+  margin: auto;
+}
+
+.profile-item-container {
+  width: 300px;
   margin: auto;
 }

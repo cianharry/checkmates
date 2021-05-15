@@ -64,7 +64,7 @@ const EditProfile = ({ createUserProfile, getCurrentUser, history, profile: { pr
         <Fragment>
             <div className="profile-form">
                 <h1 className="large text-center check-font">
-                    Create Your Check-mate Profile
+                    Edit Your Check-mate Profile
                 </h1>
                 
                 
@@ -89,7 +89,7 @@ const EditProfile = ({ createUserProfile, getCurrentUser, history, profile: { pr
                         
                     </div>
                     <div className="form-group">
-                        <p className="lead check-font">
+                        <p className="large check-font">
                             Age
                         </p>
                         <input
@@ -101,7 +101,7 @@ const EditProfile = ({ createUserProfile, getCurrentUser, history, profile: { pr
                             onChange={e => onChange(e)} />
                     </div>
                     <div className="form-group">
-                        <p className="lead check-font">
+                        <p className="large check-font">
                             Biological Sex
                         </p>
                         <input
@@ -116,7 +116,7 @@ const EditProfile = ({ createUserProfile, getCurrentUser, history, profile: { pr
                     </small>
                     </div>
                     <div className="form-group">
-                        <p className="lead check-font">
+                        <p className="large check-font">
                             Personal Bio
                         </p>
                         <textarea

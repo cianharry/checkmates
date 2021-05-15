@@ -27,7 +27,7 @@ const Dashboard = ({getCurrentUser, deleteUser, auth, profile}) => {
             <div className="my-2">
                     <button onClick={() => deleteUser() } className="btn btn-danger float-right">Delete Account</button>
                 </div>
-                <h1 className="mainheading check-font">Dashboard</h1>
+                <h1 className="mainheading large check-font">Dashboard</h1>
                 
                 <p className="lead">
                     <i className="fas fa-user pr-2"></i> 

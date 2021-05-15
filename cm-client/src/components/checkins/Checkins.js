@@ -28,7 +28,7 @@ const Checkins = ({ getPersonalCheckins, checkin: { checkins, loading } }) => {
                 <CheckinForm/>
                 <h1 className='mt-4 large check-font'>Check-ins</h1>
                 <p className="lead">
-                    <i className="fas fa-user"></i> Welcome to the checkmates community
+                    <i className="fas fa-user primary-col"></i> Welcome to the checkmates community
                 </p>
                 <div className="checkins">
                     {checkins.map(checkin => (

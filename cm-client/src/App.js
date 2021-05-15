@@ -39,7 +39,7 @@ const App = () => {
     <Provider store={store}>
         <Router>
           <Fragment>
-          <section className="container">
+          <section className='root-container'>
             <Navbar/>
             
               <Route exact path="/" component={ Home }/>
