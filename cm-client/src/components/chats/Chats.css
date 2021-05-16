@@ -6,7 +6,7 @@
   margin: auto;
   text-align: center;
   padding: 2rem;
-  max-width: 100%;
+  max-width: 95%;
 }
 
 .chat-form-container button {
@@ -27,7 +27,7 @@
 .chat-container {
   margin: 1rem auto;
   width: 1000px;
-  max-width: 100%;
+  max-width: 95%;
 }
 
 .chat-container h1 {

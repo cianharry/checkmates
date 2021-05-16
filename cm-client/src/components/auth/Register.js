@@ -80,7 +80,7 @@ const Register = (props) => {
             <div className="h-100 col-md-10 p-3 mx-auto ">
                 <div className="text-center mt-4">
                     <form className="form-signin" onSubmit={e => onSubmit(e)}>
-                        <h1 className="large mb-3">Register with Checkmates</h1>
+                        <h1 className="large mb-3 check-font">Register with check-mate</h1>
                         <input
                             type="text"
                             id="name"
@@ -125,13 +125,13 @@ const Register = (props) => {
                             />
                         
                         <button
-                            className="btn btn-lg btn-secondary btn-block mt-5"
+                            className="btn btn-lg btn-light btn-block mt-5"
                             type="submit"
                             value="Register">Register</button>
                             <p className="mt-2">
                             Already have an account?
                         </p>
-                        <Link className="btn btn-primary" to='/login'>Login</Link>
+                        <Link className="btn btn-secondary" to='/login'>Login</Link>
                         <p className="mt-5 mb-3">Checkmates © 2020-2021</p>
                     </form>
                 </div>

@@ -5,17 +5,18 @@ import PropTypes from 'prop-types'
 const ProfileItem = ({ profile: {
     user: { _id, name, avatar, },
     experience,
+    age,
     gender,
     bio
 }}) => {
     // creating the invidual profile component to be displayed in the profiles component
     return (
-        <div style={{opacity: 1}} className='profile-container p-1 '>
-            <div style={{opacity: 1}} className="profile-item-container">
+        <div className='profile-container'>
+            <div className="profile-item-container">
                 <img src={avatar} alt="profile pic" className="round-img"/>
                 <div>
-                    <h2>{name}</h2>
-                    <p style={{color: '#33cccc'}} className="lead">Exp: {experience}</p>
+                    <h2 className='check-font'>{name}</h2>
+                    <h4>{age}</h4>
                     <Link to={`/profile/${_id}`} className='btn btn-primary' >
                         View Profile
                     </Link>

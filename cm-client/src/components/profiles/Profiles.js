@@ -20,10 +20,10 @@ const Profiles = ({ getProfiles, profile: { profiles, loading }}) => {
                 </Spinner>
                 ) : (
                 <Fragment>
-                    <div className="p-2">
+                    <div className="profile-form">
                         <h1 className='check-font text-center large'>Check-mate Profiles</h1>
                         <p className="lead text-center"><i className="fas fa-hands-helping"></i> Connect with other Checkmates and build a support network with people who understand what you are going through... </p>
-                        <div className="background-col">
+                        <div className="profiles-holder">
                             {/*
                             // Req_Id:      R0 - 
                             // Test_Id:     T045

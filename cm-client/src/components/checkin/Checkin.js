@@ -24,7 +24,7 @@ const Checkin = ({ getCheckin, checkin: { checkin, loading }, match }) => {
         </Fragment>
     ) : (
         <Fragment>
-            <div className="profile-form text-center">
+            <div className="profile-form">
                 <Link to={'/checkins'} className='btn btn-secondary mb-2'>Go Back</Link>
                 <CheckinItem personalCheckins={false} checkin={checkin} showButtons={false}/>
                 <CheckinComment checkinId={checkin._id} />

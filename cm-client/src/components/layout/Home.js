@@ -13,9 +13,9 @@ const Home = (props) => {
         <div className="home-container">
             <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
             <div className="vid-container">
-                <h1 className="cover-heading">Why check-mates?</h1>
+                <h1 className="cover-heading large check-font">Why check-mate?</h1>
                 <p className="lead">The number of emotions we can experience as humans is estimated to exceed 34,000..... I know right?</p>
-                <p className="lead">At <strong>Checkmates</strong> we apply a methodothology defined by Plutchik, in which he identifies 8 primary emotions that are grouped into polar opposites. Combinations of these emotions are the building blocks of our daily experiences in life and the key to understanding personal emotional wellbeing. </p>
+                <p className="lead">At <strong>check-mate</strong> we apply a methodothology defined by Plutchik, in which he identifies 8 primary emotions that are grouped into polar opposites. Combinations of these emotions are the building blocks of our daily experiences in life and the key to understanding personal emotional wellbeing. </p>
                 
             </div>
             <main role="main" className="inner cover mt-2 p-5 text-center bg-light">
@@ -41,18 +41,17 @@ const Home = (props) => {
             
             <div className='text-container mt-2 d-flex p-5 bg-light'>
                 <div className='w-50 text-center'>
-                    <p className="lead primary-col">What?</p>
+                    <p className="lead primary-col">What we do?</p>
                     <p><i className="fas primary-col fa-angle-right"></i> Simplify emotions</p>
-                    <p><i className="fas primary-col fa-angle-right"></i> Provides an opportunity for sharing</p>
-                    <p><i className="fas primary-col fa-angle-right"></i> Empowers individuals and others</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Provide an opportunity for sharing</p>
+                    <p><i className="fas primary-col fa-angle-right"></i> Empower individuals and others</p>
                 </div>
                 <div className='w-50 text-center'>
-                    <p className="lead primary-col"> How?</p>
+                    <p className="lead primary-col"> What you do?</p>
                     <p><i className="fas primary-col fa-angle-right"></i> Learn to attend to your emotions regularly</p>
                     <p><i className="fas primary-col fa-angle-right"></i> Become curious and patient with your emotions</p>
                     <p><i className="fas primary-col fa-angle-right"></i> Talk about them, be honest with yourself and others</p>
                     <p><i className="fas primary-col fa-angle-right"></i> Learn to accept different emotions through understanding</p>
-                    <p><i className="fas primary-col fa-angle-right"></i> Alter your emotions with other emotions</p>
                 </div>
 
                 </div>

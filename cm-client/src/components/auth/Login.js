@@ -33,8 +33,7 @@ const Login = (props) => {
             <div className="h-100 col-md-10 p-3 mx-auto ">
                 <div className="text-center mt-4">
                     <form className="form-signin" onSubmit={e => onSubmit(e)}>
-                        <h1 className="large mb-3">Login to Checkmates</h1>
-                        
+                        <h1 className="large check-font">Login to your check-mate account</h1>
                         <input
                             type="email"
                             id="inputEmail"
@@ -58,13 +57,13 @@ const Login = (props) => {
                             minLength="8"/>
                         
                         <button
-                            className="btn btn-lg btn-secondary btn-block mt-5"
+                            className="btn btn-lg btn-light btn-block mt-5"
                             type="submit"
                             value="Login">Login</button>
                         <p className="mt-2">
                             Don't have an account?
                         </p>
-                        <Link className="btn btn-primary" to='/register'>Register now</Link>
+                        <Link className="btn btn-secondary" to='/register'>Register now</Link>
                         <p className="mt-5 mb-3">Checkmates © 2020-2021</p>
                     </form>
                 </div>

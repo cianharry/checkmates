@@ -53,10 +53,11 @@
   background-color: #0a2929;
   color: #fff;
   padding: 1rem;
-  margin: 1rem auto;
+  margin: auto;
   width: 350px;
   border: 2px solid #fff;
   max-width: 100%;
+  margin-top: none;
 }
 
 .milestones-div {
@@ -69,7 +70,7 @@
 }
 
 .dashboard-container {
-  background-color: rgb(255, 255, 255, 0.9);
+  background-color: rgb(255, 255, 255, 0.8);
   border-radius: 6px;
   padding: 1rem;
   margin: 1rem;

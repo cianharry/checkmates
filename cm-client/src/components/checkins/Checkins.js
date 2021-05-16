@@ -20,15 +20,15 @@ const Checkins = ({ getPersonalCheckins, checkin: { checkins, loading } }) => {
             role="status">
         </Spinner> : (
         <Fragment>
-            <div className="container-checkins text-center">
+            <div className="container-checkins">
                 <div className="text-center">
                     <img src={plutchik} alt=''/>
                 </div>
                 
                 <CheckinForm/>
-                <h1 className='mt-4 large check-font'>Check-ins</h1>
-                <p className="lead">
-                    <i className="fas fa-user primary-col"></i> Welcome to the checkmates community
+                <h1 className='mt-4 large check-font text-center'>Check-ins</h1>
+                <p className="lead text-center">
+                    <i className="fas fa-user primary-col"></i> Reflect on previous checkins to get view your progress
                 </p>
                 <div className="checkins">
                     {checkins.map(checkin => (
