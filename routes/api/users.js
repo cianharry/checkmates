@@ -46,11 +46,9 @@ router.post('/', [
                 return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
             }
             // Initializing gravatar module and defining size, rating and default image if user does not have a gravatar
-            const avatar = gravatar.url(email, {
-                s: "200",
-                r: 'pg',
-                d: 'mm'
-            })
+            const aId = Math.floor(Math.random() * 71)
+            const avatar = `https://i.pravatar.cc/300?img=${aId}`
+
             // create user
             user = new User({
                 name,
