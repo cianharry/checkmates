@@ -20,7 +20,7 @@ const CheckinsAll = ({ getCheckins, checkin: { checkins, loading }}) => {
                 <p className="lead text-center">
                     <i className="fas fa-user primary-col"></i> check-up on freinds and other check-mate users
                 </p>
-                <div className="checkins pt-5 text-center">
+                <div className="checkins">
                     {checkins.map(checkin => (
                         <CheckinItem personalCheckins={false} key={checkin._id} checkin={checkin}/>
                     ))}
